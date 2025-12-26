@@ -5,14 +5,6 @@ class PlayScene extends Phaser.Scene {
     //consts
     notes = [];
     noteSpeed = 400;
-    chart = [
-        { t: 0.50, lane: 0 },
-        { t: 1.00, lane: 1 },
-        { t: 1.50, lane: 2 },
-        { t: 2.00, lane: 3 },
-        { t: 2.25, lane: 0 },
-        { t: 2.50, lane: 3 },
-    ];
     chartIndex = 0;
 
     constructor() {
@@ -21,8 +13,8 @@ class PlayScene extends Phaser.Scene {
 
     preload() {
         this.load.audio("song", "audio/song.mp3");
+        this.load.json("chart", "charts/chart.json");
     }
-
 
     create() {
         const { width, height } = this.scale;
@@ -66,6 +58,10 @@ class PlayScene extends Phaser.Scene {
             }).setOrigin(0.5, 0);
         }
 
+        const data = this.cache.json.get("chart");
+        this.chart = data
+        this.chartIndex = 0;
+
         //song
         this.sound.pauseOnBlur = false;
 
@@ -95,14 +91,14 @@ class PlayScene extends Phaser.Scene {
         arrowKeys.right.on("down", () => press(3));
 
         // Test pattern: one note per lane
-        this.time.addEvent({
-            delay: 400,
-            repeat: 7,
-            callback: () => {
-                const lane = Phaser.Math.Between(0, 3);
-                this.spawnNote(lane);
-            },
-        });
+        // this.time.addEvent({
+        //     delay: 400,
+        //     repeat: 7,
+        //     callback: () => {
+        //         const lane = Phaser.Math.Between(0, 3);
+        //         this.spawnNote(lane);
+        //     },
+        // });
 
         this.scale.on("resize", () => this.scene.restart());
     }
@@ -128,13 +124,14 @@ class PlayScene extends Phaser.Scene {
     }
 
     update(time, delta) {
-        // 1) Move notes
+        // 1) Move notes every frame (always)
         const dy = (this.noteSpeed * delta) / 1000;
+
         this.notes.forEach((n) => {
             n.sprite.y += dy;
         });
 
-        // 2) Remove notes that passed the screen
+        // Cleanup
         this.notes = this.notes.filter((n) => {
             if (n.sprite.y > this.scale.height + 50) {
                 n.sprite.destroy();
@@ -143,8 +140,8 @@ class PlayScene extends Phaser.Scene {
             return true;
         });
 
-        // 3) Spawn notes based on song time
-        if (!this.song || !this.song.isPlaying) return;
+        // 2) Only spawn from chart if the song is playing
+        if (!this.song.isPlaying) return;
 
         const songTime = this.song.seek; // seconds
 
@@ -156,6 +153,7 @@ class PlayScene extends Phaser.Scene {
             this.chartIndex++;
         }
     }
+
 
 
 
