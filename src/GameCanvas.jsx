@@ -84,6 +84,24 @@ class PlayScene extends Phaser.Scene {
             this.time.delayedCall(60, () => r.setFillStyle(0x151526).setAlpha(0.95));
         };
 
+        //song scoring
+        this.hitY = Math.floor(height * 0.82);
+        this.score = 0;
+        this.combo = 0;
+
+        this.scoreText = this.add.text(16, 40, "Score: 0\nCombo: 0", {
+            fontFamily: "system-ui",
+            fontSize: "16px",
+            color: "#d6d6ff",
+        });
+
+        this.judgeText = this.add.text(16, 90, "", {
+            fontFamily: "system-ui",
+            fontSize: "18px",
+            color: "#ffffff",
+        });
+
+
         // Map: Left, Down, Up, Right
         arrowKeys.left.on("down", () => press(0));
         arrowKeys.down.on("down", () => press(1));
@@ -100,6 +118,15 @@ class PlayScene extends Phaser.Scene {
         //     },
         // });
 
+        const cursors = this.input.keyboard.createCursorKeys();
+
+        // Lanes: 0=Left, 1=Down, 2=Up, 3=Right
+        cursors.left.on("down", () => this.tryHit(0));
+        cursors.down.on("down", () => this.tryHit(1));
+        cursors.up.on("down", () => this.tryHit(2));
+        cursors.right.on("down", () => this.tryHit(3));
+
+
         this.scale.on("resize", () => this.scene.restart());
     }
 
@@ -112,16 +139,66 @@ class PlayScene extends Phaser.Scene {
         const x = lane.x;
         const y = -20;
 
-        const note = this.add.rectangle(
-            x,
-            y,
-            lane.width * 0.7,
-            20,
-            0xffffff
-        );
+        const note = this.add.rectangle(x, y, lane.width * 0.82, 34, 0xffffff);
 
-        this.notes.push({ laneIndex, sprite: note });
+        this.notes.push({
+            laneIndex,
+            sprite: note
+        });
     }
+
+    tryHit(laneIndex) {
+        if (!this.notes?.length) return;
+
+        const perfectPx = 14;
+        const greatPx = 26;
+        const goodPx = 40;
+
+        // Find the closest note in THIS lane (by distance to hit line)
+        let best = null;
+        let bestDist = Infinity;
+
+        for (const n of this.notes) {
+            if (n.laneIndex !== laneIndex) continue;
+            const dist = Math.abs(n.sprite.y - this.hitY);
+            if (dist < bestDist) {
+                bestDist = dist;
+                best = n;
+            }
+        }
+
+        if (!best) return;
+
+        let points = 0;
+        let label = "";
+
+        if (bestDist <= perfectPx) {
+            points = 300;
+            label = "Perfect";
+        } else if (bestDist <= greatPx) {
+            points = 150;
+            label = "Great";
+        } else if (bestDist <= goodPx) {
+            points = 50;
+            label = "Good";
+        } else {
+            // too far: treat as "no hit"
+            return;
+        }
+
+        // Remove note
+        best.sprite.destroy();
+        this.notes = this.notes.filter((x) => x !== best);
+
+        // Update score/combo
+        this.combo += 1;
+        this.score += points + Math.min(this.combo, 50); // small combo bonus
+
+        this.scoreText.setText(`Score: ${this.score}\nCombo: ${this.combo}`);
+        this.judgeText.setText(`${label}!`);
+        this.time.delayedCall(120, () => this.judgeText.setText(""));
+    }
+
 
     update(time, delta) {
         // 1) Move notes every frame (always)
@@ -152,6 +229,21 @@ class PlayScene extends Phaser.Scene {
             this.spawnNote(this.chart[this.chartIndex].lane);
             this.chartIndex++;
         }
+
+        const missPx = 60;
+
+        this.notes = this.notes.filter((n) => {
+            if (n.sprite.y > this.hitY + missPx) {
+                n.sprite.destroy();
+                this.combo = 0;
+                this.scoreText.setText(`Score: ${this.score}\nCombo: ${this.combo}`);
+                this.judgeText.setText("Miss");
+                this.time.delayedCall(120, () => this.judgeText.setText(""));
+                return false;
+            }
+            return true;
+        });
+
     }
 
 
