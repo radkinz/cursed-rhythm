@@ -2,9 +2,27 @@ import { useEffect, useRef } from "react";
 import Phaser from "phaser";
 
 class PlayScene extends Phaser.Scene {
+    //consts
+    notes = [];
+    noteSpeed = 400;
+    chart = [
+        { t: 0.50, lane: 0 },
+        { t: 1.00, lane: 1 },
+        { t: 1.50, lane: 2 },
+        { t: 2.00, lane: 3 },
+        { t: 2.25, lane: 0 },
+        { t: 2.50, lane: 3 },
+    ];
+    chartIndex = 0;
+
     constructor() {
         super("play");
     }
+
+    preload() {
+        this.load.audio("song", "audio/song.mp3");
+    }
+
 
     create() {
         const { width, height } = this.scale;
@@ -14,7 +32,7 @@ class PlayScene extends Phaser.Scene {
 
         // Playfield geometry
         const lanes = 4;
-        const laneWidth = Math.min(160, Math.floor(width * 0.16));        
+        const laneWidth = Math.min(160, Math.floor(width * 0.16));
         const gap = 10;
         const totalWidth = lanes * laneWidth + (lanes - 1) * gap;
         const left = (width - totalWidth) / 2;
@@ -48,20 +66,26 @@ class PlayScene extends Phaser.Scene {
             }).setOrigin(0.5, 0);
         }
 
-        // Small debug label
-        this.add.text(16, 16, "Lanes + hit line", {
-            fontFamily: "system-ui",
-            fontSize: "14px",
-            color: "#d6d6ff",
+        //song
+        this.sound.pauseOnBlur = false;
+
+        this.song = this.sound.add("song", { volume: 0.8 });
+        this.startedAt = null;
+
+        // Start on Space
+        this.input.keyboard.once("keydown-SPACE", async () => {
+            // Some browsers need a user gesture to unlock audio; Space counts.
+            this.song.play();
+            this.startedAt = this.time.now;
         });
 
         const arrowKeys = this.input.keyboard.createCursorKeys();
 
         const press = (idx) => {
-        const r = this.laneRects[idx];
-        if (!r) return;
-        r.setFillStyle(0x2a2a55).setAlpha(1);
-        this.time.delayedCall(60, () => r.setFillStyle(0x151526).setAlpha(0.95));
+            const r = this.laneRects[idx];
+            if (!r) return;
+            r.setFillStyle(0x2a2a55).setAlpha(1);
+            this.time.delayedCall(60, () => r.setFillStyle(0x151526).setAlpha(0.95));
         };
 
         // Map: Left, Down, Up, Right
@@ -70,9 +94,69 @@ class PlayScene extends Phaser.Scene {
         arrowKeys.up.on("down", () => press(2));
         arrowKeys.right.on("down", () => press(3));
 
+        // Test pattern: one note per lane
+        this.time.addEvent({
+            delay: 400,
+            repeat: 7,
+            callback: () => {
+                const lane = Phaser.Math.Between(0, 3);
+                this.spawnNote(lane);
+            },
+        });
 
         this.scale.on("resize", () => this.scene.restart());
     }
+
+    spawnNote(laneIndex) {
+        const { width } = this.scale;
+
+        const lane = this.laneRects[laneIndex];
+        if (!lane) return;
+
+        const x = lane.x;
+        const y = -20;
+
+        const note = this.add.rectangle(
+            x,
+            y,
+            lane.width * 0.7,
+            20,
+            0xffffff
+        );
+
+        this.notes.push({ laneIndex, sprite: note });
+    }
+
+    update(time, delta) {
+        // 1) Move notes
+        const dy = (this.noteSpeed * delta) / 1000;
+        this.notes.forEach((n) => {
+            n.sprite.y += dy;
+        });
+
+        // 2) Remove notes that passed the screen
+        this.notes = this.notes.filter((n) => {
+            if (n.sprite.y > this.scale.height + 50) {
+                n.sprite.destroy();
+                return false;
+            }
+            return true;
+        });
+
+        // 3) Spawn notes based on song time
+        if (!this.song || !this.song.isPlaying) return;
+
+        const songTime = this.song.seek; // seconds
+
+        while (
+            this.chartIndex < this.chart.length &&
+            songTime >= this.chart[this.chartIndex].t
+        ) {
+            this.spawnNote(this.chart[this.chartIndex].lane);
+            this.chartIndex++;
+        }
+    }
+
 
 
 }
