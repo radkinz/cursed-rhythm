@@ -2,372 +2,453 @@ import { useEffect, useRef } from "react";
 import Phaser from "phaser";
 
 class PlayScene extends Phaser.Scene {
-    //consts
-    notes = [];
-    noteSpeed = 400;
-    chartIndex = 0;
+  constructor() {
+    super("play");
+  }
 
-    constructor() {
-        super("play");
+  preload() {
+    this.load.audio("song", "audio/song.mp3");
+    this.load.json("chart", "charts/chart.json");
+
+    this.load.image("arrowL", "sprites/arrow_left.png");
+    this.load.image("arrowD", "sprites/arrow_down.png");
+    this.load.image("arrowU", "sprites/arrow_up.png");
+    this.load.image("arrowR", "sprites/arrow_right.png");
+  }
+
+  create() {
+    // ---- Reset all runtime state (important for restarts/hot reloads) ----
+    this.notes = [];
+    this.chart = [];
+    this.chartIndex = 0;
+
+    this.score = 0;
+    this.combo = 0;
+
+    this.stageIndex = 0;
+    this.stageActive = true;
+    this.spawningEnabled = true;
+
+    // ---- Geometry ----
+    const { width, height } = this.scale;
+
+    this.add.rectangle(width / 2, height / 2, width, height, 0x0b0b10);
+
+    const lanes = 4;
+    const laneWidth = Math.min(160, Math.floor(width * 0.16));
+    const gap = 10;
+    const totalWidth = lanes * laneWidth + (lanes - 1) * gap;
+    const left = (width - totalWidth) / 2;
+
+    this.hitY = Math.floor(height * 0.82);
+    this.spawnY = -60; // must match Python generator spawn_y
+
+    this.lanesCenterX = left + totalWidth / 2;
+
+    // ---- 6 stages for 231s ----
+    this.stages = [
+      {
+        name: "Stage 1",
+        start: 0,
+        end: 35,
+        params: { perfectS: 0.080, greatS: 0.140, goodS: 0.220 },
+        message: "Stage 1: tutorial mode. Try not to trip.",
+      },
+      {
+        name: "Stage 2",
+        start: 35,
+        end: 70,
+        params: { perfectS: 0.070, greatS: 0.130, goodS: 0.200 },
+        message: "Stage 2: okay, you can tap. Congrats.",
+      },
+      {
+        name: "Stage 3",
+        start: 70,
+        end: 105,
+        params: { perfectS: 0.060, greatS: 0.120, goodS: 0.180 },
+        message: "Stage 3: keep it together.",
+      },
+      {
+        name: "Stage 4",
+        start: 105,
+        end: 145,
+        params: { perfectS: 0.055, greatS: 0.110, goodS: 0.170 },
+        message: "Stage 4: now we’re cooking. (badly.)",
+      },
+      {
+        name: "Stage 5",
+        start: 145,
+        end: 190,
+        params: { perfectS: 0.050, greatS: 0.100, goodS: 0.160 },
+        message: "Stage 5: focus. Or perish.",
+      },
+      {
+        name: "Stage 6",
+        start: 190,
+        end: 231,
+        params: { perfectS: 0.045, greatS: 0.090, goodS: 0.145 },
+        message: "Stage 6: final. Don’t blink.",
+      },
+    ];
+
+    this.applyStage(0);
+
+    // ---- Popup (center screen) ----
+    this.popup = this.add.container(width / 2, height / 2).setDepth(2000).setAlpha(0);
+
+    const popupBg = this.add
+      .rectangle(0, 0, 520, 140, 0x000000, 0.75)
+      .setStrokeStyle(3, 0xffffff, 0.25);
+
+    this.popupTitle = this.add
+      .text(0, -30, "", {
+        fontFamily: "system-ui",
+        fontSize: "24px",
+        fontStyle: "900",
+        color: "#ffffff",
+      })
+      .setOrigin(0.5);
+
+    this.popupBody = this.add
+      .text(0, 20, "", {
+        fontFamily: "system-ui",
+        fontSize: "16px",
+        color: "#d6d6ff",
+        wordWrap: { width: 480 },
+      })
+      .setOrigin(0.5);
+
+    this.popup.add([popupBg, this.popupTitle, this.popupBody]);
+
+    // Keep popup centered on resize (DON'T restart the scene)
+    this.scale.on("resize", (gameSize) => {
+      this.popup.setPosition(gameSize.width / 2, gameSize.height / 2);
+    });
+
+    // ---- Lanes ----
+    this.laneRects = [];
+    for (let i = 0; i < lanes; i++) {
+      const x = left + i * (laneWidth + gap) + laneWidth / 2;
+      const rect = this.add.rectangle(x, height / 2, laneWidth, height, 0x151526).setAlpha(0.95);
+      this.laneRects.push(rect);
     }
 
-    preload() {
-        this.load.audio("song", "audio/song.mp3");
-        this.load.json("chart", "charts/chart.json");
-        this.load.image("arrowL", "sprites/arrow_left.png");
-        this.load.image("arrowD", "sprites/arrow_down.png");
-        this.load.image("arrowU", "sprites/arrow_up.png");
-        this.load.image("arrowR", "sprites/arrow_right.png");
+    // Separators
+    for (let i = 1; i < lanes; i++) {
+      const sepX = left + i * (laneWidth + gap) - gap / 2;
+      this.add.rectangle(sepX, height / 2, 2, height, 0x000000).setAlpha(0.25);
     }
 
-    create() {
-        const { width, height } = this.scale;
+    // Hit line
+    this.add.rectangle(width / 2, this.hitY, totalWidth, 6, 0xffffff).setAlpha(0.6);
 
-        // Background
-        this.add.rectangle(width / 2, height / 2, width, height, 0x0b0b10);
+    // Key labels
+    const keys = ["←", "↓", "↑", "→"];
+    for (let i = 0; i < lanes; i++) {
+      const x = left + i * (laneWidth + gap) + laneWidth / 2;
+      this.add
+        .text(x, this.hitY + 18, keys[i], {
+          fontFamily: "system-ui",
+          fontSize: "16px",
+          color: "#d6d6ff",
+        })
+        .setOrigin(0.5, 0);
+    }
 
-        // Playfield geometry
-        const lanes = 4;
-        const laneWidth = Math.min(160, Math.floor(width * 0.16));
-        const gap = 10;
-        const totalWidth = lanes * laneWidth + (lanes - 1) * gap;
-        const left = (width - totalWidth) / 2;
-        const hitY = Math.floor(height * 0.82);
+    // ---- Per-lane judgement texts under hit line ----
+    this.laneJudgeTexts = [];
+    const judgeYOffset = 46;
+    for (let i = 0; i < lanes; i++) {
+      const x = this.laneRects[i].x;
+      const y = this.hitY + judgeYOffset;
+      const t = this.add
+        .text(x, y, "", {
+          fontFamily: "system-ui",
+          fontSize: "20px",
+          fontStyle: "900",
+          color: "#ffffff",
+        })
+        .setOrigin(0.5)
+        .setAlpha(0)
+        .setDepth(1000);
 
-        // Lanes
-        this.laneRects = [];
-        for (let i = 0; i < lanes; i++) {
-            const x = left + i * (laneWidth + gap) + laneWidth / 2;
-            const rect = this.add.rectangle(x, height / 2, laneWidth, height, 0x151526).setAlpha(0.95);
-            this.laneRects.push(rect);
-        }
+      this.laneJudgeTexts.push(t);
+    }
 
-        // Lane separators (subtle)
-        for (let i = 1; i < lanes; i++) {
-            const sepX = left + i * (laneWidth + gap) - gap / 2;
-            this.add.rectangle(sepX, height / 2, 2, height, 0x000000).setAlpha(0.25);
-        }
+    // ---- Score UI ----
+    this.scoreText = this.add
+      .text(16, 16, "Score: 0\nCombo: 0", {
+        fontFamily: "system-ui",
+        fontSize: "16px",
+        color: "#d6d6ff",
+      })
+      .setDepth(1500);
 
-        // Hit line
-        this.add.rectangle(width / 2, hitY, totalWidth, 6, 0xffffff).setAlpha(0.6);
+    // ---- Load chart ----
+    const data = this.cache.json.get("chart");
+    this.chart = Array.isArray(data) ? data : [];
+    this.chartIndex = 0;
 
-        // Key labels
-        const keys = ["←", "↓", "↑", "→"];
-        for (let i = 0; i < lanes; i++) {
-            const x = left + i * (laneWidth + gap) + laneWidth / 2;
-            this.add.text(x, hitY + 18, keys[i], {
-                fontFamily: "system-ui",
-                fontSize: "16px",
-                color: "#d6d6ff",
-            }).setOrigin(0.5, 0);
-        }
+    // Quick sanity log (remove later)
+    // console.log("chart[0]", this.chart?.[0]);
 
-        const data = this.cache.json.get("chart");
-        this.chart = data
-        this.chartIndex = 0;
+    // ---- Audio ----
+    this.sound.pauseOnBlur = false;
+    this.song = this.sound.add("song", { volume: 0.8 });
 
-        //song
-        this.sound.pauseOnBlur = false;
+    // Start on Space
+    this.input.keyboard.once("keydown-SPACE", () => {
+      this.song.play();
+    });
 
-        this.song = this.sound.add("song", { volume: 0.8 });
-        this.startedAt = null;
+    // Arrow keys -> lanes
+    const arrowKeys = this.input.keyboard.createCursorKeys();
+    arrowKeys.left.on("down", () => this.tryHit(0));
+    arrowKeys.down.on("down", () => this.tryHit(1));
+    arrowKeys.up.on("down", () => this.tryHit(2));
+    arrowKeys.right.on("down", () => this.tryHit(3));
 
-        // Start on Space
-        this.input.keyboard.once("keydown-SPACE", async () => {
-            // Some browsers need a user gesture to unlock audio; Space counts.
-            this.song.play();
-            this.startedAt = this.time.now;
+    // Optional: show Stage 1 popup right away
+    this.showStagePopup("Stage 1", this.stages[0].message, () => {});
+  }
+
+  applyStage(i) {
+    const s = this.stages[i];
+    this.currentStage = s;
+
+    // time-based windows (stable across different speeds)
+    this.perfectS = s.params.perfectS;
+    this.greatS = s.params.greatS;
+    this.goodS = s.params.goodS;
+  }
+
+  beginStageTransition() {
+    this.stageActive = false;
+    this.spawningEnabled = false;
+
+    const nextIndex = this.stageIndex + 1;
+
+    if (nextIndex >= this.stages.length) {
+      this.showStagePopup("Finished", "You beat it. That’s unfortunate.", () => {});
+      return;
+    }
+
+    const msg = this.stages[nextIndex].message;
+
+    this.showStagePopup(`Stage ${nextIndex + 1}`, msg, () => {
+      this.stageIndex = nextIndex;
+      this.applyStage(this.stageIndex);
+
+      this.stageActive = true;
+      this.spawningEnabled = true;
+    });
+  }
+
+  showStagePopup(title, message, onDone) {
+    this.popupTitle.setText(title);
+    this.popupBody.setText(message);
+
+    this.popup.setAlpha(0);
+    this.popup.setScale(0.95);
+
+    this.tweens.killTweensOf(this.popup);
+
+    this.tweens.add({
+      targets: this.popup,
+      alpha: 1,
+      scale: 1.0,
+      duration: 220,
+      ease: "Quad.out",
+      onComplete: () => {
+        this.time.delayedCall(900, () => {
+          this.tweens.add({
+            targets: this.popup,
+            alpha: 0,
+            scale: 0.98,
+            duration: 220,
+            ease: "Quad.in",
+            onComplete: () => onDone?.(),
+          });
         });
+      },
+    });
+  }
 
-        const arrowKeys = this.input.keyboard.createCursorKeys();
+  showJudgement(laneIndex, label) {
+    const colors = {
+      PERFECT: "#7df9ff",
+      GREAT: "#5cff7d",
+      GOOD: "#ffe066",
+      MISS: "#ff5c5c",
+    };
 
-        const press = (idx) => {
-            const r = this.laneRects[idx];
-            if (!r) return;
-            r.setFillStyle(0x2a2a55).setAlpha(1);
-            this.time.delayedCall(60, () => r.setFillStyle(0x151526).setAlpha(0.95));
-        };
+    const t = this.laneJudgeTexts?.[laneIndex];
+    if (!t) return;
 
-        //song scoring
-        this.hitY = Math.floor(height * 0.82);
-        this.score = 0;
+    t.setDepth(1000);
+    t.setText(label);
+    t.setColor(colors[label] || "#ffffff");
+    t.setAlpha(1);
+    t.setScale(0.9);
+
+    this.tweens.killTweensOf(t);
+
+    this.tweens.add({
+      targets: t,
+      scale: 1.12,
+      alpha: 0,
+      duration: 220,
+      ease: "Quad.out",
+    });
+  }
+
+  spawnNoteFromChart(noteData) {
+    const laneIndex = noteData.lane;
+    const lane = this.laneRects[laneIndex];
+    if (!lane) return;
+
+    const key = ["arrowL", "arrowD", "arrowU", "arrowR"][laneIndex];
+    const x = lane.x;
+    const y = this.spawnY;
+
+    const sprite = this.add.image(x, y, key).setOrigin(0.5);
+    sprite.setDepth(10);
+
+    const targetWidth = lane.width * 0.9;
+    sprite.setScale(targetWidth / sprite.width);
+
+    this.notes.push({
+      laneIndex,
+      sprite,
+      spawn: noteData.spawn,
+      hit: noteData.hit,
+      speed: noteData.speed,
+    });
+  }
+
+  tryHit(laneIndex) {
+    if (!this.stageActive) return;
+    if (!this.song || !this.song.isPlaying) return;
+
+    const songTime = this.song.seek;
+
+    // Find closest note in lane by time error
+    let best = null;
+    let bestErr = Infinity;
+
+    for (const n of this.notes) {
+      if (n.laneIndex !== laneIndex) continue;
+      const err = Math.abs(songTime - n.hit);
+      if (err < bestErr) {
+        bestErr = err;
+        best = n;
+      }
+    }
+
+    if (!best) return;
+
+    // Out of window -> ignore (or you can show MISS on press if you want)
+    if (bestErr > this.goodS) return;
+
+    let points = 0;
+    let label = "GOOD";
+
+    if (bestErr <= this.perfectS) {
+      points = 300;
+      label = "PERFECT";
+    } else if (bestErr <= this.greatS) {
+      points = 150;
+      label = "GREAT";
+    } else {
+      points = 50;
+      label = "GOOD";
+    }
+
+    this.showJudgement(laneIndex, label);
+
+    best.sprite.destroy();
+    this.notes = this.notes.filter((x) => x !== best);
+
+    this.combo += 1;
+    this.score += points + Math.min(this.combo, 50);
+
+    this.scoreText.setText(`Score: ${this.score}\nCombo: ${this.combo}`);
+  }
+
+  update() {
+    if (!this.song || !this.song.isPlaying) return;
+
+    const songTime = this.song.seek;
+
+    // Stage transitions
+    if (this.currentStage && songTime >= this.currentStage.end && this.stageActive) {
+      this.beginStageTransition();
+    }
+
+    // Spawn notes by spawn time
+    if (this.spawningEnabled && this.chart && this.chart.length > 0) {
+      while (this.chartIndex < this.chart.length && songTime >= this.chart[this.chartIndex].spawn) {
+        const nd = this.chart[this.chartIndex];
+        this.spawnNoteFromChart(nd);
+        this.chartIndex++;
+      }
+    }
+
+    // Move notes (time-synced)
+    for (const n of this.notes) {
+      n.sprite.y = this.spawnY + (songTime - n.spawn) * n.speed;
+    }
+
+    // Miss detection
+    const missPx = 60;
+
+    this.notes = this.notes.filter((n) => {
+      if (n.sprite.y > this.hitY + missPx) {
+        n.sprite.destroy();
         this.combo = 0;
-
-        this.scoreText = this.add.text(16, 40, "Score: 0\nCombo: 0", {
-            fontFamily: "system-ui",
-            fontSize: "16px",
-            color: "#d6d6ff",
-        });
-
-        this.judgeText = this.add.text(16, 90, "", {
-            fontFamily: "system-ui",
-            fontSize: "18px",
-            color: "#ffffff",
-        });
-
-
-        // Map: Left, Down, Up, Right
-        arrowKeys.left.on("down", () => press(0));
-        arrowKeys.down.on("down", () => press(1));
-        arrowKeys.up.on("down", () => press(2));
-        arrowKeys.right.on("down", () => press(3));
-
-        // Test pattern: one note per lane
-        // this.time.addEvent({
-        //     delay: 400,
-        //     repeat: 7,
-        //     callback: () => {
-        //         const lane = Phaser.Math.Between(0, 3);
-        //         this.spawnNote(lane);
-        //     },
-        // });
-
-        const cursors = this.input.keyboard.createCursorKeys();
-
-        // Lanes: 0=Left, 1=Down, 2=Up, 3=Right
-        cursors.left.on("down", () => this.tryHit(0));
-        cursors.down.on("down", () => this.tryHit(1));
-        cursors.up.on("down", () => this.tryHit(2));
-        cursors.right.on("down", () => this.tryHit(3));
-
-        this.laneJudgeTexts = [];
-        const judgeYOffset = 40; // distance below hit line
-
-        for (let i = 0; i < 4; i++) {
-            const x = this.laneRects[i].x;
-            const y = this.hitY + judgeYOffset;
-
-            const t = this.add.text(x, y, "", {
-                fontFamily: "system-ui",
-                fontSize: "22px",
-                fontStyle: "900",
-                color: "#ffffff",
-            })
-                .setOrigin(0.5)
-                .setAlpha(0);
-
-            this.laneJudgeTexts.push(t);
-        }
-
-        this.scale.on("resize", () => this.scene.restart());
-    }
-
-    showJudgement(laneIndex, label) {
-        const colors = {
-            PERFECT: "#7df9ff",
-            GREAT: "#5cff7d",
-            GOOD: "#ffe066",
-            MISS: "#ff5c5c",
-        };
-
-        const t = this.laneJudgeTexts?.[laneIndex];
-        if (!t) return;
-
-        // Make sure it's visible above notes/images
-        t.setDepth(1000);
-
-        // Per-judgement emphasis
-        const pop = {
-            PERFECT: { start: 0.85, peak: 1.25, dur: 260 },
-            GREAT: { start: 0.85, peak: 1.18, dur: 240 },
-            GOOD: { start: 0.85, peak: 1.10, dur: 220 },
-            MISS: { start: 0.95, peak: 1.05, dur: 260 },
-        }[label] || { start: 0.85, peak: 1.15, dur: 240 };
-
-        t.setText(label);
-        t.setColor(colors[label] || "#ffffff");
-        t.setAlpha(1);
-        t.setScale(pop.start);
-
-        // Kill any prior animations + delayed fades
-        this.tweens.killTweensOf(t);
-        if (t._judgeFadeEvent) {
-            t._judgeFadeEvent.remove(false);
-            t._judgeFadeEvent = null;
-        }
-
-        // Pop in
-        this.tweens.add({
-            targets: t,
-            scale: pop.peak,
-            duration: Math.floor(pop.dur * 0.45),
-            ease: "Back.out",
-        });
-
-        // Hold briefly, then fade out
-        t._judgeFadeEvent = this.time.delayedCall(Math.floor(pop.dur * 0.35), () => {
-            this.tweens.add({
-                targets: t,
-                alpha: 0,
-                scale: pop.peak * 0.98,
-                duration: Math.floor(pop.dur * 0.55),
-                ease: "Quad.out",
-            });
-        });
-    }
-
-
-
-    spawnNote(laneIndex) {
-        const lane = this.laneRects[laneIndex];
-        if (!lane) return;
-
-        const keys = ["arrowL", "arrowD", "arrowU", "arrowR"];
-        const key = keys[laneIndex];
-
-        const x = lane.x;
-        const y = -60;
-
-        const note = this.add.image(x, y, key);
-        note.setOrigin(0.5);
-
-        // Scale image to fit lane nicely
-        const targetWidth = lane.width * 0.9;
-        const scale = targetWidth / note.width;
-        note.setScale(scale);
-
-        // (Optional) make hit-testing easier even if sprite is small
-        // note.setDisplaySize(lane.width * 0.75, lane.width * 0.75);
-
-        this.notes.push({ laneIndex, sprite: note });
-    }
-
-    tryHit(laneIndex) {
-        if (!this.notes?.length) {
-            this.showJudgement(laneIndex, "NO NOTE");
-            return;
-        }
-
-        // TEMP: make the windows forgiving so you can confirm the pipeline works
-        const perfectPx = 20;
-        const greatPx = 45;
-        const goodPx = 90;   // <-- much bigger than before (debug)
-
-        // Find closest note in this lane
-        let best = null;
-        let bestDist = Infinity;
-
-        for (const n of this.notes) {
-            if (n.laneIndex !== laneIndex) continue;
-            const dist = Math.abs(n.sprite.y - this.hitY);
-            if (dist < bestDist) {
-                bestDist = dist;
-                best = n;
-            }
-        }
-
-        if (!best) {
-            this.showJudgement(laneIndex, "EMPTY");
-            return;
-        }
-
-        // Helpful debug: show distance if you're not in-window
-        // (You can remove this once it's working)
-        if (bestDist > goodPx) {
-            this.showJudgement(laneIndex, `OFF (${Math.round(bestDist)})`);
-            return;
-        }
-
-        let points = 0;
-        let label = "GOOD";
-
-        if (bestDist <= perfectPx) {
-            points = 300;
-            label = "PERFECT";
-        } else if (bestDist <= greatPx) {
-            points = 150;
-            label = "GREAT";
-        } else {
-            points = 50;
-            label = "GOOD";
-        }
-
-        // Show judgement first
-        this.showJudgement(laneIndex, label);
-
-        // Remove note
-        best.sprite.destroy();
-        this.notes = this.notes.filter((x) => x !== best);
-
-        // Score/combo
-        this.combo = (this.combo ?? 0) + 1;
-        this.score = (this.score ?? 0) + points + Math.min(this.combo, 50);
-
-        this.scoreText?.setText?.(`Score: ${this.score}\nCombo: ${this.combo}`);
-    }
-
-    update(time, delta) {
-        // 1) Move notes every frame
-        const dy = (this.noteSpeed * delta) / 1000;
-        this.notes.forEach((n) => {
-            n.sprite.y += dy;
-        });
-
-        // 2) MISS detection + cleanup (THIS is where the filter goes)
-        const missPx = 60;
-
-        this.notes = this.notes.filter((n) => {
-            if (n.sprite.y > this.hitY + missPx) {
-                n.sprite.destroy();
-                this.combo = 0;
-                this.scoreText.setText(`Score: ${this.score}\nCombo: ${this.combo}`);
-                this.showJudgement(n.laneIndex, "MISS");
-                return false; // remove note
-            }
-            return true; // keep note
-        });
-
-        // 3) Chart-based spawning (only when song is playing)
-        if (!this.song || !this.song.isPlaying) return;
-        if (!this.chart || this.chart.length === 0) return;
-
-        const songTime = this.song.seek;
-
-        while (
-            this.chartIndex < this.chart.length &&
-            songTime >= this.chart[this.chartIndex].t
-        ) {
-            this.spawnNote(this.chart[this.chartIndex].lane);
-            this.chartIndex++;
-        }
-    }
-
+        this.scoreText.setText(`Score: ${this.score}\nCombo: ${this.combo}`);
+        this.showJudgement(n.laneIndex, "MISS");
+        return false;
+      }
+      return true;
+    });
+  }
 }
 
 export default function GameCanvas() {
-    const containerRef = useRef(null);
-    const gameRef = useRef(null);
+  const containerRef = useRef(null);
+  const gameRef = useRef(null);
 
-    useEffect(() => {
-        if (gameRef.current) return;
+  useEffect(() => {
+    if (gameRef.current) return;
 
-        gameRef.current = new Phaser.Game({
-            type: Phaser.AUTO,
-            parent: containerRef.current,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "#0b0b10",
-            scene: [PlayScene],
-            scale: {
-                mode: Phaser.Scale.RESIZE,
-                autoCenter: Phaser.Scale.CENTER_BOTH,
-            },
-        });
+    gameRef.current = new Phaser.Game({
+      type: Phaser.AUTO,
+      parent: containerRef.current,
+      width: "100%",
+      height: "100%",
+      backgroundColor: "#0b0b10",
+      scene: [PlayScene],
+      scale: {
+        mode: Phaser.Scale.RESIZE,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+      },
+    });
 
-        return () => {
-            gameRef.current?.destroy(true);
-            gameRef.current = null;
-        };
-    }, []);
+    return () => {
+      gameRef.current?.destroy(true);
+      gameRef.current = null;
+    };
+  }, []);
 
-    return (
-        <div
-            ref={containerRef}
-            style={{
-                width: "100vw",
-                height: "100vh",
-                overflow: "hidden",
-            }}
-        />
-    );
+  return (
+    <div
+      ref={containerRef}
+      style={{
+        width: "100vw",
+        height: "100vh",
+        overflow: "hidden",
+      }}
+    />
+  );
 }

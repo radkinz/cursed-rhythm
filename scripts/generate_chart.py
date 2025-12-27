@@ -1,134 +1,177 @@
 import json
 import random
 from dataclasses import dataclass
-from typing import List, Dict, Optional, Literal
+from typing import List, Dict, Optional
 
 
 @dataclass
 class Note:
-    t: float   # seconds from song start
-    lane: int  # 0..3 (Left, Down, Up, Right)
+    hit: float    # seconds when note should be hit
+    spawn: float  # seconds when note should spawn (so it reaches hitY at hit time)
+    lane: int     # 0..3
+    stage: int    # 1..6
+    speed: float  # px/s used for this note
 
 
-def beats_to_seconds(beat: float, bpm: float, offset: float) -> float:
-    return offset + beat * (60.0 / bpm)
+def clamp(x: float, lo: float, hi: float) -> float:
+    return max(lo, min(hi, x))
 
 
-def generate_for_duration(
+def pick_lane(rng: random.Random, prev_lane: Optional[int], prefer_nearby: bool, no_jacks: bool, jumpiness: float) -> int:
+    candidates = [0, 1, 2, 3]
+    if no_jacks and prev_lane is not None:
+        candidates = [l for l in candidates if l != prev_lane]
+
+    if prev_lane is None or not prefer_nearby:
+        return rng.choice(candidates)
+
+    # Bias closer lanes, but allow jumps with "jumpiness"
+    weights = []
+    for l in candidates:
+        d = abs(l - prev_lane)
+        base = 1.0 / (1.0 + d)          # favors close
+        w = (1.0 - jumpiness) * base + jumpiness * 1.0  # mix with uniform
+        weights.append(w)
+
+    return rng.choices(candidates, weights=weights, k=1)[0]
+
+
+def generate_stage_notes(
+    rng: random.Random,
     bpm: float,
     offset: float,
-    duration_seconds: float,
-    grid: Literal["1/4", "1/8", "1/16"] = "1/8",
-    density: float = 0.35,
-    seed: int = 42,
-    no_jacks: bool = True,
-    prefer_nearby: bool = True,
-    max_gap_beats: float = 2.0,
+    stage_index: int,
+    stage_start: float,
+    stage_end: float,
+    *,
+    grid_beats: float,       # 1.0 = quarters, 0.5 = eighths, 0.25 = sixteenths
+    density: float,          # probability per slot
+    max_gap_beats: float,    # force a note if gap too large
+    speed: float,            # px/s
+    spawn_y: float,          # px
+    hit_y: float,            # px
+    no_jacks: bool,
+    prefer_nearby: bool,
+    jumpiness: float,        # 0 easy (close), 1 hard (uniform)
 ) -> List[Note]:
-    """
-    Generates a simple chart across the full song with a max-gap constraint.
+    spb = 60.0 / bpm
 
-    grid:
-      - "1/4"  => quarter notes (easy)
-      - "1/8"  => eighth notes (medium)
-      - "1/16" => sixteenth notes (hard)
+    # Convert stage time range into beats, aligned to grid
+    # We generate "hit times" on a beat grid.
+    start_beat = (stage_start - offset) / spb
+    end_beat = (stage_end - offset) / spb
+    start_beat = max(0.0, start_beat)
+    end_beat = max(0.0, end_beat)
 
-    density:
-      probability of placing a note at each grid slot (0..1). Lower = easier.
+    # Snap to grid
+    b = (start_beat // grid_beats) * grid_beats
+    if b < start_beat:
+        b += grid_beats
 
-    max_gap_beats:
-      guarantees you never go more than this many beats without a note.
-      (At 75 BPM: 1 beat = 0.8s, so 2 beats = 1.6s max silence.)
-
-    no_jacks:
-      avoids placing the same lane twice in a row (reduces difficulty).
-
-    prefer_nearby:
-      biases lane choice toward neighboring lanes (reduces big jumps).
-    """
-    rng = random.Random(seed)
-
-    step_beats = {"1/4": 1.0, "1/8": 0.5, "1/16": 0.25}[grid]
-    total_beats = max(0.0, (duration_seconds - offset) * bpm / 60.0)
+    travel_time = (hit_y - spawn_y) / speed  # seconds needed to fall into hit line
 
     notes: List[Note] = []
     prev_lane: Optional[int] = None
-
-    # Track how many beats since last note was placed.
-    # Start at max to encourage an early note near the beginning.
     gap_beats = max_gap_beats
 
-    beat = 0.0
-    while beat <= total_beats:
+    while b <= end_beat:
         should_place = (rng.random() < density) or (gap_beats >= max_gap_beats)
 
         if should_place:
-            candidates = [0, 1, 2, 3]
+            lane = pick_lane(rng, prev_lane, prefer_nearby, no_jacks, jumpiness)
 
-            if no_jacks and prev_lane is not None:
-                candidates = [l for l in candidates if l != prev_lane]
+            hit_t = offset + b * spb
+            spawn_t = hit_t - travel_time
 
-            if prefer_nearby and prev_lane is not None:
-                # Higher weight for lanes closer to previous lane
-                weights = [1.0 / (1.0 + abs(l - prev_lane)) for l in candidates]
-                lane = rng.choices(candidates, weights=weights, k=1)[0]
+            # don't spawn before song start
+            if spawn_t >= 0.0 and hit_t >= stage_start and hit_t <= stage_end:
+                notes.append(Note(
+                    hit=hit_t,
+                    spawn=spawn_t,
+                    lane=lane,
+                    stage=stage_index,
+                    speed=speed
+                ))
+                prev_lane = lane
+                gap_beats = 0.0
             else:
-                lane = rng.choice(candidates)
-
-            t = beats_to_seconds(beat, bpm, offset)
-            notes.append(Note(t=t, lane=lane))
-
-            prev_lane = lane
-            gap_beats = 0.0
+                gap_beats += grid_beats
         else:
-            gap_beats += step_beats
+            gap_beats += grid_beats
 
-        beat += step_beats
+        b += grid_beats
 
-    # Already in increasing time, but safe to sort.
-    notes.sort(key=lambda n: n.t)
     return notes
 
 
 def main():
-    # Song info (given)
+    rng = random.Random(42)
+
+    # Song constants
     bpm = 75.0
-    duration_seconds = 231.0  # 3:51
-    offset = 0.20             # adjust if notes feel early/late
+    duration_seconds = 231.0
+    offset = 0.20  # tune this if everything feels globally early/late
 
-    # Difficulty knobs (start easy and consistent)
-    grid: Literal["1/4", "1/8", "1/16"] = "1/8"
-    density = 0.35
-    max_gap_beats = 2.0       # never more than 2 beats without a note (~1.6s at 75 BPM)
+    # IMPORTANT: match these to your Phaser layout values
+    # If you don't know them exactly, start with these and adjust:
+    spawn_y = -60.0
+    hit_y = 600.0   # <-- change to your actual hitY in pixels if you want perfect sync
 
-    # Pattern constraints
-    no_jacks = True
-    prefer_nearby = True
+    # 6 stages (time in seconds)
+    stages = [
+        dict(start=0.0,   end=35.0,  msg="Stage 1: tutorial mode. Try not to trip."),
+        dict(start=35.0,  end=70.0,  msg="Stage 2: okay, you can tap."),
+        dict(start=70.0,  end=105.0, msg="Stage 3: I regret believing in you."),
+        dict(start=105.0, end=145.0, msg="Stage 4: hands? shaking? good."),
+        dict(start=145.0, end=190.0, msg="Stage 5: focus. or perish."),
+        dict(start=190.0, end=231.0, msg="Stage 6: final. prove it."),
+    ]
 
-    notes = generate_for_duration(
-        bpm=bpm,
-        offset=offset,
-        duration_seconds=duration_seconds,
-        grid=grid,
-        density=density,
-        seed=42,
-        no_jacks=no_jacks,
-        prefer_nearby=prefer_nearby,
-        max_gap_beats=max_gap_beats,
-    )
+    # Difficulty ramp per stage
+    # grid_beats: 1.0 quarters, 0.5 eighths, 0.25 sixteenths
+    params = [
+        dict(grid_beats=1.0, density=0.70, max_gap_beats=2.0, speed=320.0, jumpiness=0.05),
+        dict(grid_beats=0.5, density=0.45, max_gap_beats=2.0, speed=360.0, jumpiness=0.10),
+        dict(grid_beats=0.5, density=0.55, max_gap_beats=1.5, speed=400.0, jumpiness=0.18),
+        dict(grid_beats=0.5, density=0.65, max_gap_beats=1.0, speed=440.0, jumpiness=0.25),
+        dict(grid_beats=0.25, density=0.38, max_gap_beats=1.0, speed=480.0, jumpiness=0.35),
+        dict(grid_beats=0.25, density=0.48, max_gap_beats=0.75, speed=520.0, jumpiness=0.45),
+    ]
 
-    out: List[Dict] = [{"t": round(n.t, 4), "lane": n.lane} for n in notes]
+    all_notes: List[Note] = []
+    for i, st in enumerate(stages, start=1):
+        p = params[i - 1]
+        all_notes.extend(generate_stage_notes(
+            rng=rng,
+            bpm=bpm,
+            offset=offset,
+            stage_index=i,
+            stage_start=st["start"],
+            stage_end=st["end"],
+            grid_beats=p["grid_beats"],
+            density=p["density"],
+            max_gap_beats=p["max_gap_beats"],
+            speed=p["speed"],
+            spawn_y=spawn_y,
+            hit_y=hit_y,
+            no_jacks=True,
+            prefer_nearby=True,
+            jumpiness=p["jumpiness"],
+        ))
+
+    # Sort by spawn time (since the game will spawn by spawn)
+    all_notes.sort(key=lambda n: n.spawn)
+
+    out: List[Dict] = [
+        {"spawn": round(n.spawn, 4), "hit": round(n.hit, 4), "lane": n.lane, "stage": n.stage, "speed": round(n.speed, 2)}
+        for n in all_notes
+        if 0.0 <= n.hit <= duration_seconds
+    ]
 
     with open("chart.json", "w") as f:
         json.dump(out, f, indent=2)
 
     print(f"Wrote {len(out)} notes to chart.json")
-    print(
-        "Settings:",
-        f"bpm={bpm}, duration={duration_seconds}s, offset={offset}, grid={grid}, "
-        f"density={density}, max_gap_beats={max_gap_beats}, "
-        f"no_jacks={no_jacks}, prefer_nearby={prefer_nearby}"
-    )
 
 
 if __name__ == "__main__":
