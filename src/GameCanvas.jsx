@@ -130,9 +130,83 @@ class PlayScene extends Phaser.Scene {
         cursors.up.on("down", () => this.tryHit(2));
         cursors.right.on("down", () => this.tryHit(3));
 
+        this.laneJudgeTexts = [];
+        const judgeYOffset = 40; // distance below hit line
+
+        for (let i = 0; i < 4; i++) {
+            const x = this.laneRects[i].x;
+            const y = this.hitY + judgeYOffset;
+
+            const t = this.add.text(x, y, "", {
+                fontFamily: "system-ui",
+                fontSize: "22px",
+                fontStyle: "900",
+                color: "#ffffff",
+            })
+                .setOrigin(0.5)
+                .setAlpha(0);
+
+            this.laneJudgeTexts.push(t);
+        }
 
         this.scale.on("resize", () => this.scene.restart());
     }
+
+    showJudgement(laneIndex, label) {
+        const colors = {
+            PERFECT: "#7df9ff",
+            GREAT: "#5cff7d",
+            GOOD: "#ffe066",
+            MISS: "#ff5c5c",
+        };
+
+        const t = this.laneJudgeTexts?.[laneIndex];
+        if (!t) return;
+
+        // Make sure it's visible above notes/images
+        t.setDepth(1000);
+
+        // Per-judgement emphasis
+        const pop = {
+            PERFECT: { start: 0.85, peak: 1.25, dur: 260 },
+            GREAT: { start: 0.85, peak: 1.18, dur: 240 },
+            GOOD: { start: 0.85, peak: 1.10, dur: 220 },
+            MISS: { start: 0.95, peak: 1.05, dur: 260 },
+        }[label] || { start: 0.85, peak: 1.15, dur: 240 };
+
+        t.setText(label);
+        t.setColor(colors[label] || "#ffffff");
+        t.setAlpha(1);
+        t.setScale(pop.start);
+
+        // Kill any prior animations + delayed fades
+        this.tweens.killTweensOf(t);
+        if (t._judgeFadeEvent) {
+            t._judgeFadeEvent.remove(false);
+            t._judgeFadeEvent = null;
+        }
+
+        // Pop in
+        this.tweens.add({
+            targets: t,
+            scale: pop.peak,
+            duration: Math.floor(pop.dur * 0.45),
+            ease: "Back.out",
+        });
+
+        // Hold briefly, then fade out
+        t._judgeFadeEvent = this.time.delayedCall(Math.floor(pop.dur * 0.35), () => {
+            this.tweens.add({
+                targets: t,
+                alpha: 0,
+                scale: pop.peak * 0.98,
+                duration: Math.floor(pop.dur * 0.55),
+                ease: "Quad.out",
+            });
+        });
+    }
+
+
 
     spawnNote(laneIndex) {
         const lane = this.laneRects[laneIndex];
@@ -158,15 +232,18 @@ class PlayScene extends Phaser.Scene {
         this.notes.push({ laneIndex, sprite: note });
     }
 
-
     tryHit(laneIndex) {
-        if (!this.notes?.length) return;
+        if (!this.notes?.length) {
+            this.showJudgement(laneIndex, "NO NOTE");
+            return;
+        }
 
-        const perfectPx = 14;
-        const greatPx = 26;
-        const goodPx = 40;
+        // TEMP: make the windows forgiving so you can confirm the pipeline works
+        const perfectPx = 20;
+        const greatPx = 45;
+        const goodPx = 90;   // <-- much bigger than before (debug)
 
-        // Find the closest note in THIS lane (by distance to hit line)
+        // Find closest note in this lane
         let best = null;
         let bestDist = Infinity;
 
@@ -179,60 +256,72 @@ class PlayScene extends Phaser.Scene {
             }
         }
 
-        if (!best) return;
+        if (!best) {
+            this.showJudgement(laneIndex, "EMPTY");
+            return;
+        }
+
+        // Helpful debug: show distance if you're not in-window
+        // (You can remove this once it's working)
+        if (bestDist > goodPx) {
+            this.showJudgement(laneIndex, `OFF (${Math.round(bestDist)})`);
+            return;
+        }
 
         let points = 0;
-        let label = "";
+        let label = "GOOD";
 
         if (bestDist <= perfectPx) {
             points = 300;
-            label = "Perfect";
+            label = "PERFECT";
         } else if (bestDist <= greatPx) {
             points = 150;
-            label = "Great";
-        } else if (bestDist <= goodPx) {
-            points = 50;
-            label = "Good";
+            label = "GREAT";
         } else {
-            // too far: treat as "no hit"
-            return;
+            points = 50;
+            label = "GOOD";
         }
+
+        // Show judgement first
+        this.showJudgement(laneIndex, label);
 
         // Remove note
         best.sprite.destroy();
         this.notes = this.notes.filter((x) => x !== best);
 
-        // Update score/combo
-        this.combo += 1;
-        this.score += points + Math.min(this.combo, 50); // small combo bonus
+        // Score/combo
+        this.combo = (this.combo ?? 0) + 1;
+        this.score = (this.score ?? 0) + points + Math.min(this.combo, 50);
 
-        this.scoreText.setText(`Score: ${this.score}\nCombo: ${this.combo}`);
-        this.judgeText.setText(`${label}!`);
-        this.time.delayedCall(120, () => this.judgeText.setText(""));
+        this.scoreText?.setText?.(`Score: ${this.score}\nCombo: ${this.combo}`);
     }
 
-
     update(time, delta) {
-        // 1) Move notes every frame (always)
+        // 1) Move notes every frame
         const dy = (this.noteSpeed * delta) / 1000;
-
         this.notes.forEach((n) => {
             n.sprite.y += dy;
         });
 
-        // Cleanup
+        // 2) MISS detection + cleanup (THIS is where the filter goes)
+        const missPx = 60;
+
         this.notes = this.notes.filter((n) => {
-            if (n.sprite.y > this.scale.height + 50) {
+            if (n.sprite.y > this.hitY + missPx) {
                 n.sprite.destroy();
-                return false;
+                this.combo = 0;
+                this.scoreText.setText(`Score: ${this.score}\nCombo: ${this.combo}`);
+                this.showJudgement(n.laneIndex, "MISS");
+                return false; // remove note
             }
-            return true;
+            return true; // keep note
         });
 
-        // 2) Only spawn from chart if the song is playing
-        if (!this.song.isPlaying) return;
+        // 3) Chart-based spawning (only when song is playing)
+        if (!this.song || !this.song.isPlaying) return;
+        if (!this.chart || this.chart.length === 0) return;
 
-        const songTime = this.song.seek; // seconds
+        const songTime = this.song.seek;
 
         while (
             this.chartIndex < this.chart.length &&
@@ -241,25 +330,7 @@ class PlayScene extends Phaser.Scene {
             this.spawnNote(this.chart[this.chartIndex].lane);
             this.chartIndex++;
         }
-
-        const missPx = 60;
-
-        this.notes = this.notes.filter((n) => {
-            if (n.sprite.y > this.hitY + missPx) {
-                n.sprite.destroy();
-                this.combo = 0;
-                this.scoreText.setText(`Score: ${this.score}\nCombo: ${this.combo}`);
-                this.judgeText.setText("Miss");
-                this.time.delayedCall(120, () => this.judgeText.setText(""));
-                return false;
-            }
-            return true;
-        });
-
     }
-
-
-
 
 }
 
