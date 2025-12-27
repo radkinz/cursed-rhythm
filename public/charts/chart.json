@@ -196,29 +196,36 @@
     "speed": 320.0
   },
   {
-    "spawn": 35.1667,
-    "hit": 37.0,
+    "spawn": 30.9375,
+    "hit": 33.0,
     "lane": 2,
-    "stage": 2,
-    "speed": 360.0
+    "stage": 1,
+    "speed": 320.0
   },
   {
-    "spawn": 35.5667,
-    "hit": 37.4,
+    "spawn": 31.7375,
+    "hit": 33.8,
+    "lane": 1,
+    "stage": 1,
+    "speed": 320.0
+  },
+  {
+    "spawn": 36.7667,
+    "hit": 38.6,
     "lane": 1,
     "stage": 2,
     "speed": 360.0
   },
   {
-    "spawn": 36.7667,
-    "hit": 38.6,
+    "spawn": 37.1667,
+    "hit": 39.0,
     "lane": 0,
     "stage": 2,
     "speed": 360.0
   },
   {
-    "spawn": 38.3667,
-    "hit": 40.2,
+    "spawn": 37.9667,
+    "hit": 39.8,
     "lane": 2,
     "stage": 2,
     "speed": 360.0
@@ -226,13 +233,13 @@
   {
     "spawn": 38.7667,
     "hit": 40.6,
-    "lane": 3,
+    "lane": 0,
     "stage": 2,
     "speed": 360.0
   },
   {
-    "spawn": 39.1667,
-    "hit": 41.0,
+    "spawn": 39.9667,
+    "hit": 41.8,
     "lane": 1,
     "stage": 2,
     "speed": 360.0
@@ -240,6 +247,13 @@
   {
     "spawn": 40.3667,
     "hit": 42.2,
+    "lane": 2,
+    "stage": 2,
+    "speed": 360.0
+  },
+  {
+    "spawn": 41.1667,
+    "hit": 43.0,
     "lane": 0,
     "stage": 2,
     "speed": 360.0
@@ -247,20 +261,20 @@
   {
     "spawn": 41.5667,
     "hit": 43.4,
+    "lane": 3,
+    "stage": 2,
+    "speed": 360.0
+  },
+  {
+    "spawn": 43.1667,
+    "hit": 45.0,
     "lane": 2,
     "stage": 2,
     "speed": 360.0
   },
   {
-    "spawn": 42.3667,
-    "hit": 44.2,
-    "lane": 1,
-    "stage": 2,
-    "speed": 360.0
-  },
-  {
-    "spawn": 43.5667,
-    "hit": 45.4,
+    "spawn": 44.3667,
+    "hit": 46.2,
     "lane": 3,
     "stage": 2,
     "speed": 360.0
@@ -273,51 +287,72 @@
     "speed": 360.0
   },
   {
-    "spawn": 45.1667,
-    "hit": 47.0,
-    "lane": 0,
-    "stage": 2,
-    "speed": 360.0
-  },
-  {
-    "spawn": 47.1667,
-    "hit": 49.0,
-    "lane": 1,
-    "stage": 2,
-    "speed": 360.0
-  },
-  {
-    "spawn": 48.7667,
-    "hit": 50.6,
+    "spawn": 46.3667,
+    "hit": 48.2,
     "lane": 2,
     "stage": 2,
     "speed": 360.0
   },
   {
-    "spawn": 49.1667,
-    "hit": 51.0,
+    "spawn": 46.7667,
+    "hit": 48.6,
     "lane": 3,
     "stage": 2,
     "speed": 360.0
   },
   {
-    "spawn": 51.1667,
-    "hit": 53.0,
+    "spawn": 47.5667,
+    "hit": 49.4,
+    "lane": 2,
+    "stage": 2,
+    "speed": 360.0
+  },
+  {
+    "spawn": 48.3667,
+    "hit": 50.2,
+    "lane": 3,
+    "stage": 2,
+    "speed": 360.0
+  },
+  {
+    "spawn": 49.9667,
+    "hit": 51.8,
     "lane": 1,
     "stage": 2,
     "speed": 360.0
   },
   {
-    "spawn": 52.3667,
-    "hit": 54.2,
+    "spawn": 50.3667,
+    "hit": 52.2,
+    "lane": 3,
+    "stage": 2,
+    "speed": 360.0
+  },
+  {
+    "spawn": 51.5667,
+    "hit": 53.4,
     "lane": 0,
+    "stage": 2,
+    "speed": 360.0
+  },
+  {
+    "spawn": 52.7667,
+    "hit": 54.6,
+    "lane": 2,
     "stage": 2,
     "speed": 360.0
   },
   {
     "spawn": 53.1667,
     "hit": 55.0,
-    "lane": 2,
+    "lane": 3,
+    "stage": 2,
+    "speed": 360.0
+  },
+  {
+    "spawn": 53.9667,
+    "hit": 55.8,
+    "lane": 1,
     "stage": 2,
     "speed": 360.0
   },
@@ -329,8 +364,15 @@
     "speed": 360.0
   },
   {
-    "spawn": 55.5667,
-    "hit": 57.4,
+    "spawn": 55.1667,
+    "hit": 57.0,
+    "lane": 0,
+    "stage": 2,
+    "speed": 360.0
+  },
+  {
+    "spawn": 56.3667,
+    "hit": 58.2,
     "lane": 1,
     "stage": 2,
     "speed": 360.0
@@ -345,7 +387,7 @@
   {
     "spawn": 57.9667,
     "hit": 59.8,
-    "lane": 3,
+    "lane": 0,
     "stage": 2,
     "speed": 360.0
   },
@@ -357,29 +399,29 @@
     "speed": 360.0
   },
   {
+    "spawn": 58.7667,
+    "hit": 60.6,
+    "lane": 0,
+    "stage": 2,
+    "speed": 360.0
+  },
+  {
     "spawn": 59.1667,
     "hit": 61.0,
-    "lane": 0,
+    "lane": 2,
     "stage": 2,
     "speed": 360.0
   },
   {
     "spawn": 59.5667,
     "hit": 61.4,
-    "lane": 2,
+    "lane": 3,
     "stage": 2,
     "speed": 360.0
   },
   {
     "spawn": 60.3667,
     "hit": 62.2,
-    "lane": 3,
-    "stage": 2,
-    "speed": 360.0
-  },
-  {
-    "spawn": 60.7667,
-    "hit": 62.6,
     "lane": 0,
     "stage": 2,
     "speed": 360.0
@@ -392,29 +434,29 @@
     "speed": 360.0
   },
   {
-    "spawn": 61.9667,
-    "hit": 63.8,
-    "lane": 2,
+    "spawn": 63.1667,
+    "hit": 65.0,
+    "lane": 0,
+    "stage": 2,
+    "speed": 360.0
+  },
+  {
+    "spawn": 63.5667,
+    "hit": 65.4,
+    "lane": 1,
     "stage": 2,
     "speed": 360.0
   },
   {
     "spawn": 63.9667,
     "hit": 65.8,
-    "lane": 1,
+    "lane": 2,
     "stage": 2,
     "speed": 360.0
   },
   {
-    "spawn": 64.3667,
-    "hit": 66.2,
-    "lane": 0,
-    "stage": 2,
-    "speed": 360.0
-  },
-  {
-    "spawn": 65.1667,
-    "hit": 67.0,
+    "spawn": 65.5667,
+    "hit": 67.4,
     "lane": 1,
     "stage": 2,
     "speed": 360.0
@@ -422,23 +464,37 @@
   {
     "spawn": 65.9667,
     "hit": 67.8,
-    "lane": 2,
+    "lane": 3,
     "stage": 2,
     "speed": 360.0
   },
   {
-    "spawn": 70.55,
-    "hit": 72.2,
+    "spawn": 66.3667,
+    "hit": 68.2,
     "lane": 0,
-    "stage": 3,
-    "speed": 400.0
+    "stage": 2,
+    "speed": 360.0
   },
   {
-    "spawn": 70.95,
-    "hit": 72.6,
+    "spawn": 66.7667,
+    "hit": 68.6,
     "lane": 1,
-    "stage": 3,
-    "speed": 400.0
+    "stage": 2,
+    "speed": 360.0
+  },
+  {
+    "spawn": 67.1667,
+    "hit": 69.0,
+    "lane": 0,
+    "stage": 2,
+    "speed": 360.0
+  },
+  {
+    "spawn": 67.9667,
+    "hit": 69.8,
+    "lane": 3,
+    "stage": 2,
+    "speed": 360.0
   },
   {
     "spawn": 71.75,
@@ -448,65 +504,58 @@
     "speed": 400.0
   },
   {
-    "spawn": 72.15,
-    "hit": 73.8,
-    "lane": 2,
+    "spawn": 72.55,
+    "hit": 74.2,
+    "lane": 1,
     "stage": 3,
     "speed": 400.0
   },
   {
-    "spawn": 72.55,
-    "hit": 74.2,
-    "lane": 0,
+    "spawn": 72.95,
+    "hit": 74.6,
+    "lane": 3,
     "stage": 3,
     "speed": 400.0
   },
   {
     "spawn": 73.35,
     "hit": 75.0,
+    "lane": 1,
+    "stage": 3,
+    "speed": 400.0
+  },
+  {
+    "spawn": 73.75,
+    "hit": 75.4,
     "lane": 3,
     "stage": 3,
     "speed": 400.0
   },
   {
-    "spawn": 74.15,
-    "hit": 75.8,
-    "lane": 2,
+    "spawn": 74.55,
+    "hit": 76.2,
+    "lane": 0,
+    "stage": 3,
+    "speed": 400.0
+  },
+  {
+    "spawn": 74.95,
+    "hit": 76.6,
+    "lane": 3,
     "stage": 3,
     "speed": 400.0
   },
   {
     "spawn": 75.75,
     "hit": 77.4,
-    "lane": 0,
-    "stage": 3,
-    "speed": 400.0
-  },
-  {
-    "spawn": 76.15,
-    "hit": 77.8,
-    "lane": 1,
-    "stage": 3,
-    "speed": 400.0
-  },
-  {
-    "spawn": 76.55,
-    "hit": 78.2,
-    "lane": 0,
-    "stage": 3,
-    "speed": 400.0
-  },
-  {
-    "spawn": 76.95,
-    "hit": 78.6,
-    "lane": 3,
+    "lane": 2,
     "stage": 3,
     "speed": 400.0
   },
   {
     "spawn": 77.35,
     "hit": 79.0,
-    "lane": 2,
+    "lane": 0,
     "stage": 3,
     "speed": 400.0
   },
@@ -518,15 +567,29 @@
     "speed": 400.0
   },
   {
-    "spawn": 79.35,
-    "hit": 81.0,
+    "spawn": 78.55,
+    "hit": 80.2,
     "lane": 0,
+    "stage": 3,
+    "speed": 400.0
+  },
+  {
+    "spawn": 78.95,
+    "hit": 80.6,
+    "lane": 2,
     "stage": 3,
     "speed": 400.0
   },
   {
     "spawn": 79.75,
     "hit": 81.4,
+    "lane": 0,
+    "stage": 3,
+    "speed": 400.0
+  },
+  {
+    "spawn": 80.15,
+    "hit": 81.8,
     "lane": 3,
     "stage": 3,
     "speed": 400.0
@@ -534,14 +597,7 @@
   {
     "spawn": 80.55,
     "hit": 82.2,
-    "lane": 2,
-    "stage": 3,
-    "speed": 400.0
-  },
-  {
-    "spawn": 80.95,
-    "hit": 82.6,
-    "lane": 1,
+    "lane": 0,
     "stage": 3,
     "speed": 400.0
   },
@@ -553,37 +609,30 @@
     "speed": 400.0
   },
   {
-    "spawn": 81.75,
-    "hit": 83.4,
-    "lane": 2,
-    "stage": 3,
-    "speed": 400.0
-  },
-  {
-    "spawn": 82.15,
-    "hit": 83.8,
+    "spawn": 82.55,
+    "hit": 84.2,
     "lane": 0,
     "stage": 3,
     "speed": 400.0
   },
   {
-    "spawn": 83.35,
-    "hit": 85.0,
+    "spawn": 83.75,
+    "hit": 85.4,
     "lane": 1,
     "stage": 3,
     "speed": 400.0
   },
   {
-    "spawn": 84.15,
-    "hit": 85.8,
-    "lane": 2,
+    "spawn": 84.55,
+    "hit": 86.2,
+    "lane": 0,
     "stage": 3,
     "speed": 400.0
   },
   {
     "spawn": 84.95,
     "hit": 86.6,
-    "lane": 1,
+    "lane": 2,
     "stage": 3,
     "speed": 400.0
   },
@@ -595,22 +644,22 @@
     "speed": 400.0
   },
   {
-    "spawn": 85.75,
-    "hit": 87.4,
-    "lane": 2,
-    "stage": 3,
-    "speed": 400.0
-  },
-  {
     "spawn": 86.15,
     "hit": 87.8,
-    "lane": 1,
+    "lane": 2,
     "stage": 3,
     "speed": 400.0
   },
   {
     "spawn": 86.95,
     "hit": 88.6,
+    "lane": 1,
+    "stage": 3,
+    "speed": 400.0
+  },
+  {
+    "spawn": 87.35,
+    "hit": 89.0,
     "lane": 0,
     "stage": 3,
     "speed": 400.0
@@ -618,6 +667,20 @@
   {
     "spawn": 87.75,
     "hit": 89.4,
+    "lane": 1,
+    "stage": 3,
+    "speed": 400.0
+  },
+  {
+    "spawn": 88.15,
+    "hit": 89.8,
+    "lane": 0,
+    "stage": 3,
+    "speed": 400.0
+  },
+  {
+    "spawn": 88.55,
+    "hit": 90.2,
     "lane": 2,
     "stage": 3,
     "speed": 400.0
@@ -625,90 +688,90 @@
   {
     "spawn": 88.95,
     "hit": 90.6,
-    "lane": 0,
-    "stage": 3,
-    "speed": 400.0
-  },
-  {
-    "spawn": 89.35,
-    "hit": 91.0,
     "lane": 3,
     "stage": 3,
     "speed": 400.0
   },
   {
-    "spawn": 90.55,
-    "hit": 92.2,
-    "lane": 0,
+    "spawn": 89.75,
+    "hit": 91.4,
+    "lane": 2,
+    "stage": 3,
+    "speed": 400.0
+  },
+  {
+    "spawn": 90.95,
+    "hit": 92.6,
+    "lane": 3,
+    "stage": 3,
+    "speed": 400.0
+  },
+  {
+    "spawn": 91.35,
+    "hit": 93.0,
+    "lane": 2,
     "stage": 3,
     "speed": 400.0
   },
   {
     "spawn": 92.15,
     "hit": 93.8,
-    "lane": 2,
+    "lane": 1,
     "stage": 3,
     "speed": 400.0
   },
   {
     "spawn": 92.55,
     "hit": 94.2,
-    "lane": 3,
-    "stage": 3,
-    "speed": 400.0
-  },
-  {
-    "spawn": 92.95,
-    "hit": 94.6,
-    "lane": 2,
+    "lane": 0,
     "stage": 3,
     "speed": 400.0
   },
   {
     "spawn": 93.75,
     "hit": 95.4,
-    "lane": 0,
-    "stage": 3,
-    "speed": 400.0
-  },
-  {
-    "spawn": 94.15,
-    "hit": 95.8,
-    "lane": 2,
+    "lane": 1,
     "stage": 3,
     "speed": 400.0
   },
   {
     "spawn": 94.55,
     "hit": 96.2,
-    "lane": 1,
+    "lane": 2,
     "stage": 3,
     "speed": 400.0
   },
   {
     "spawn": 95.35,
     "hit": 97.0,
-    "lane": 2,
+    "lane": 1,
     "stage": 3,
     "speed": 400.0
   },
   {
     "spawn": 95.75,
     "hit": 97.4,
-    "lane": 1,
+    "lane": 3,
     "stage": 3,
     "speed": 400.0
   },
   {
-    "spawn": 96.95,
-    "hit": 98.6,
-    "lane": 2,
+    "spawn": 96.15,
+    "hit": 97.8,
+    "lane": 1,
     "stage": 3,
     "speed": 400.0
   },
   {
     "spawn": 97.35,
     "hit": 99.0,
+    "lane": 3,
+    "stage": 3,
+    "speed": 400.0
+  },
+  {
+    "spawn": 98.15,
+    "hit": 99.8,
     "lane": 0,
     "stage": 3,
     "speed": 400.0
@@ -716,83 +779,83 @@
   {
     "spawn": 98.55,
     "hit": 100.2,
-    "lane": 3,
+    "lane": 2,
+    "stage": 3,
+    "speed": 400.0
+  },
+  {
+    "spawn": 98.95,
+    "hit": 100.6,
+    "lane": 0,
     "stage": 3,
     "speed": 400.0
   },
   {
     "spawn": 99.35,
     "hit": 101.0,
-    "lane": 0,
-    "stage": 3,
-    "speed": 400.0
-  },
-  {
-    "spawn": 99.75,
-    "hit": 101.4,
     "lane": 3,
     "stage": 3,
     "speed": 400.0
   },
   {
-    "spawn": 100.55,
-    "hit": 102.2,
+    "spawn": 100.15,
+    "hit": 101.8,
+    "lane": 1,
+    "stage": 3,
+    "speed": 400.0
+  },
+  {
+    "spawn": 101.35,
+    "hit": 103.0,
     "lane": 2,
     "stage": 3,
     "speed": 400.0
   },
   {
-    "spawn": 105.5,
-    "hit": 107.0,
+    "spawn": 102.95,
+    "hit": 104.6,
     "lane": 0,
-    "stage": 4,
-    "speed": 440.0
-  },
-  {
-    "spawn": 106.3,
-    "hit": 107.8,
-    "lane": 1,
-    "stage": 4,
-    "speed": 440.0
+    "stage": 3,
+    "speed": 400.0
   },
   {
     "spawn": 106.7,
     "hit": 108.2,
-    "lane": 3,
+    "lane": 1,
     "stage": 4,
     "speed": 440.0
   },
   {
     "spawn": 107.5,
     "hit": 109.0,
-    "lane": 2,
+    "lane": 3,
     "stage": 4,
     "speed": 440.0
   },
   {
     "spawn": 107.9,
     "hit": 109.4,
-    "lane": 3,
+    "lane": 2,
     "stage": 4,
     "speed": 440.0
   },
   {
     "spawn": 109.1,
     "hit": 110.6,
-    "lane": 2,
-    "stage": 4,
-    "speed": 440.0
-  },
-  {
-    "spawn": 109.5,
-    "hit": 111.0,
-    "lane": 3,
+    "lane": 0,
     "stage": 4,
     "speed": 440.0
   },
   {
     "spawn": 109.9,
     "hit": 111.4,
+    "lane": 3,
+    "stage": 4,
+    "speed": 440.0
+  },
+  {
+    "spawn": 110.7,
+    "hit": 112.2,
     "lane": 2,
     "stage": 4,
     "speed": 440.0
@@ -800,49 +863,63 @@
   {
     "spawn": 111.1,
     "hit": 112.6,
-    "lane": 0,
+    "lane": 1,
     "stage": 4,
     "speed": 440.0
   },
   {
     "spawn": 111.9,
     "hit": 113.4,
-    "lane": 3,
+    "lane": 0,
     "stage": 4,
     "speed": 440.0
   },
   {
-    "spawn": 112.7,
-    "hit": 114.2,
-    "lane": 2,
-    "stage": 4,
-    "speed": 440.0
-  },
-  {
-    "spawn": 113.1,
-    "hit": 114.6,
+    "spawn": 112.3,
+    "hit": 113.8,
     "lane": 1,
+    "stage": 4,
+    "speed": 440.0
+  },
+  {
+    "spawn": 113.5,
+    "hit": 115.0,
+    "lane": 2,
     "stage": 4,
     "speed": 440.0
   },
   {
     "spawn": 113.9,
     "hit": 115.4,
-    "lane": 0,
+    "lane": 3,
     "stage": 4,
     "speed": 440.0
   },
   {
     "spawn": 114.3,
     "hit": 115.8,
-    "lane": 1,
+    "lane": 2,
+    "stage": 4,
+    "speed": 440.0
+  },
+  {
+    "spawn": 114.7,
+    "hit": 116.2,
+    "lane": 3,
+    "stage": 4,
+    "speed": 440.0
+  },
+  {
+    "spawn": 115.1,
+    "hit": 116.6,
+    "lane": 2,
     "stage": 4,
     "speed": 440.0
   },
   {
     "spawn": 115.5,
     "hit": 117.0,
-    "lane": 2,
+    "lane": 0,
     "stage": 4,
     "speed": 440.0
   },
@@ -863,20 +940,13 @@
   {
     "spawn": 116.7,
     "hit": 118.2,
-    "lane": 3,
+    "lane": 1,
     "stage": 4,
     "speed": 440.0
   },
   {
     "spawn": 117.1,
     "hit": 118.6,
-    "lane": 2,
-    "stage": 4,
-    "speed": 440.0
-  },
-  {
-    "spawn": 117.5,
-    "hit": 119.0,
     "lane": 0,
     "stage": 4,
     "speed": 440.0
@@ -896,30 +966,16 @@
     "speed": 440.0
   },
   {
-    "spawn": 118.7,
-    "hit": 120.2,
-    "lane": 1,
-    "stage": 4,
-    "speed": 440.0
-  },
-  {
-    "spawn": 119.1,
-    "hit": 120.6,
+    "spawn": 119.5,
+    "hit": 121.0,
     "lane": 0,
-    "stage": 4,
-    "speed": 440.0
-  },
-  {
-    "spawn": 119.9,
-    "hit": 121.4,
-    "lane": 3,
     "stage": 4,
     "speed": 440.0
   },
   {
     "spawn": 120.3,
     "hit": 121.8,
-    "lane": 2,
+    "lane": 1,
     "stage": 4,
     "speed": 440.0
   },
@@ -931,23 +987,30 @@
     "speed": 440.0
   },
   {
-    "spawn": 122.3,
-    "hit": 123.8,
-    "lane": 1,
+    "spawn": 121.9,
+    "hit": 123.4,
+    "lane": 2,
     "stage": 4,
     "speed": 440.0
   },
   {
-    "spawn": 123.5,
-    "hit": 125.0,
+    "spawn": 122.3,
+    "hit": 123.8,
     "lane": 0,
+    "stage": 4,
+    "speed": 440.0
+  },
+  {
+    "spawn": 122.7,
+    "hit": 124.2,
+    "lane": 3,
     "stage": 4,
     "speed": 440.0
   },
   {
     "spawn": 123.9,
     "hit": 125.4,
-    "lane": 2,
+    "lane": 1,
     "stage": 4,
     "speed": 440.0
   },
@@ -961,27 +1024,27 @@
   {
     "spawn": 124.7,
     "hit": 126.2,
+    "lane": 2,
+    "stage": 4,
+    "speed": 440.0
+  },
+  {
+    "spawn": 125.1,
+    "hit": 126.6,
     "lane": 3,
+    "stage": 4,
+    "speed": 440.0
+  },
+  {
+    "spawn": 125.5,
+    "hit": 127.0,
+    "lane": 1,
     "stage": 4,
     "speed": 440.0
   },
   {
     "spawn": 125.9,
     "hit": 127.4,
-    "lane": 1,
-    "stage": 4,
-    "speed": 440.0
-  },
-  {
-    "spawn": 126.3,
-    "hit": 127.8,
-    "lane": 0,
-    "stage": 4,
-    "speed": 440.0
-  },
-  {
-    "spawn": 126.7,
-    "hit": 128.2,
     "lane": 2,
     "stage": 4,
     "speed": 440.0
@@ -989,21 +1052,21 @@
   {
     "spawn": 127.1,
     "hit": 128.6,
-    "lane": 3,
+    "lane": 0,
     "stage": 4,
     "speed": 440.0
   },
   {
     "spawn": 127.5,
     "hit": 129.0,
-    "lane": 1,
+    "lane": 2,
     "stage": 4,
     "speed": 440.0
   },
   {
     "spawn": 127.9,
     "hit": 129.4,
-    "lane": 2,
+    "lane": 3,
     "stage": 4,
     "speed": 440.0
   },
@@ -1017,7 +1080,7 @@
   {
     "spawn": 129.5,
     "hit": 131.0,
-    "lane": 2,
+    "lane": 1,
     "stage": 4,
     "speed": 440.0
   },
@@ -1029,8 +1092,15 @@
     "speed": 440.0
   },
   {
-    "spawn": 131.1,
-    "hit": 132.6,
+    "spawn": 130.3,
+    "hit": 131.8,
+    "lane": 1,
+    "stage": 4,
+    "speed": 440.0
+  },
+  {
+    "spawn": 130.7,
+    "hit": 132.2,
     "lane": 0,
     "stage": 4,
     "speed": 440.0
@@ -1043,30 +1113,30 @@
     "speed": 440.0
   },
   {
-    "spawn": 131.9,
-    "hit": 133.4,
+    "spawn": 132.3,
+    "hit": 133.8,
     "lane": 3,
     "stage": 4,
     "speed": 440.0
   },
   {
-    "spawn": 132.3,
-    "hit": 133.8,
+    "spawn": 133.1,
+    "hit": 134.6,
     "lane": 1,
-    "stage": 4,
-    "speed": 440.0
-  },
-  {
-    "spawn": 132.7,
-    "hit": 134.2,
-    "lane": 0,
     "stage": 4,
     "speed": 440.0
   },
   {
     "spawn": 133.5,
     "hit": 135.0,
-    "lane": 1,
+    "lane": 3,
+    "stage": 4,
+    "speed": 440.0
+  },
+  {
+    "spawn": 133.9,
+    "hit": 135.4,
+    "lane": 0,
     "stage": 4,
     "speed": 440.0
   },
@@ -1078,29 +1148,15 @@
     "speed": 440.0
   },
   {
-    "spawn": 135.1,
-    "hit": 136.6,
-    "lane": 1,
-    "stage": 4,
-    "speed": 440.0
-  },
-  {
-    "spawn": 135.5,
-    "hit": 137.0,
-    "lane": 3,
+    "spawn": 134.7,
+    "hit": 136.2,
+    "lane": 2,
     "stage": 4,
     "speed": 440.0
   },
   {
     "spawn": 135.9,
     "hit": 137.4,
-    "lane": 0,
-    "stage": 4,
-    "speed": 440.0
-  },
-  {
-    "spawn": 136.3,
-    "hit": 137.8,
     "lane": 3,
     "stage": 4,
     "speed": 440.0
@@ -1113,9 +1169,23 @@
     "speed": 440.0
   },
   {
-    "spawn": 137.9,
-    "hit": 139.4,
+    "spawn": 137.1,
+    "hit": 138.6,
     "lane": 3,
+    "stage": 4,
+    "speed": 440.0
+  },
+  {
+    "spawn": 137.5,
+    "hit": 139.0,
+    "lane": 2,
+    "stage": 4,
+    "speed": 440.0
+  },
+  {
+    "spawn": 138.3,
+    "hit": 139.8,
+    "lane": 0,
     "stage": 4,
     "speed": 440.0
   },
@@ -1127,23 +1197,23 @@
     "speed": 440.0
   },
   {
-    "spawn": 139.1,
-    "hit": 140.6,
-    "lane": 3,
+    "spawn": 139.5,
+    "hit": 141.0,
+    "lane": 1,
     "stage": 4,
     "speed": 440.0
   },
   {
-    "spawn": 139.5,
-    "hit": 141.0,
-    "lane": 2,
+    "spawn": 139.9,
+    "hit": 141.4,
+    "lane": 0,
     "stage": 4,
     "speed": 440.0
   },
   {
     "spawn": 140.3,
     "hit": 141.8,
-    "lane": 0,
+    "lane": 1,
     "stage": 4,
     "speed": 440.0
   },
@@ -1155,25 +1225,32 @@
     "speed": 440.0
   },
   {
-    "spawn": 141.5,
-    "hit": 143.0,
+    "spawn": 141.1,
+    "hit": 142.6,
+    "lane": 0,
+    "stage": 4,
+    "speed": 440.0
+  },
+  {
+    "spawn": 142.3,
+    "hit": 143.8,
+    "lane": 2,
+    "stage": 4,
+    "speed": 440.0
+  },
+  {
+    "spawn": 142.7,
+    "hit": 144.2,
     "lane": 1,
     "stage": 4,
     "speed": 440.0
   },
   {
-    "spawn": 145.625,
-    "hit": 147.0,
-    "lane": 0,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 146.025,
-    "hit": 147.4,
-    "lane": 1,
-    "stage": 5,
-    "speed": 480.0
+    "spawn": 143.1,
+    "hit": 144.6,
+    "lane": 2,
+    "stage": 4,
+    "speed": 440.0
   },
   {
     "spawn": 146.425,
@@ -1183,23 +1260,9 @@
     "speed": 480.0
   },
   {
-    "spawn": 146.825,
-    "hit": 148.2,
-    "lane": 1,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
     "spawn": 147.225,
     "hit": 148.6,
-    "lane": 2,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 147.425,
-    "hit": 148.8,
-    "lane": 3,
+    "lane": 1,
     "stage": 5,
     "speed": 480.0
   },
@@ -1211,6 +1274,13 @@
     "speed": 480.0
   },
   {
+    "spawn": 148.625,
+    "hit": 150.0,
+    "lane": 0,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
     "spawn": 149.025,
     "hit": 150.4,
     "lane": 1,
@@ -1218,9 +1288,23 @@
     "speed": 480.0
   },
   {
+    "spawn": 149.625,
+    "hit": 151.0,
+    "lane": 2,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
+    "spawn": 149.825,
+    "hit": 151.2,
+    "lane": 1,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
     "spawn": 150.025,
     "hit": 151.4,
-    "lane": 3,
+    "lane": 2,
     "stage": 5,
     "speed": 480.0
   },
@@ -1232,6 +1316,27 @@
     "speed": 480.0
   },
   {
+    "spawn": 150.625,
+    "hit": 152.0,
+    "lane": 2,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
+    "spawn": 150.825,
+    "hit": 152.2,
+    "lane": 1,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
+    "spawn": 151.025,
+    "hit": 152.4,
+    "lane": 0,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
     "spawn": 151.425,
     "hit": 152.8,
     "lane": 3,
@@ -1239,36 +1344,43 @@
     "speed": 480.0
   },
   {
-    "spawn": 152.425,
-    "hit": 153.8,
+    "spawn": 151.825,
+    "hit": 153.2,
     "lane": 0,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 153.025,
-    "hit": 154.4,
-    "lane": 1,
+    "spawn": 152.025,
+    "hit": 153.4,
+    "lane": 2,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 153.225,
-    "hit": 154.6,
-    "lane": 2,
+    "spawn": 152.425,
+    "hit": 153.8,
+    "lane": 3,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 153.425,
     "hit": 154.8,
-    "lane": 3,
+    "lane": 0,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 153.625,
     "hit": 155.0,
+    "lane": 1,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
+    "spawn": 154.225,
+    "hit": 155.6,
     "lane": 2,
     "stage": 5,
     "speed": 480.0
@@ -1276,62 +1388,69 @@
   {
     "spawn": 154.625,
     "hit": 156.0,
-    "lane": 3,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 154.825,
-    "hit": 156.2,
-    "lane": 0,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 155.225,
-    "hit": 156.6,
     "lane": 1,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
+    "spawn": 155.025,
+    "hit": 156.4,
+    "lane": 3,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 155.425,
     "hit": 156.8,
-    "lane": 3,
+    "lane": 0,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 155.825,
-    "hit": 157.2,
-    "lane": 1,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 156.025,
-    "hit": 157.4,
-    "lane": 3,
+    "spawn": 155.625,
+    "hit": 157.0,
+    "lane": 2,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 156.425,
     "hit": 157.8,
-    "lane": 1,
+    "lane": 3,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
+    "spawn": 156.825,
+    "hit": 158.2,
+    "lane": 2,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 157.425,
     "hit": 158.8,
-    "lane": 0,
+    "lane": 3,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 158.425,
-    "hit": 159.8,
+    "spawn": 157.825,
+    "hit": 159.2,
+    "lane": 1,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
+    "spawn": 158.025,
+    "hit": 159.4,
+    "lane": 2,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
+    "spawn": 158.225,
+    "hit": 159.6,
     "lane": 3,
     "stage": 5,
     "speed": 480.0
@@ -1339,97 +1458,90 @@
   {
     "spawn": 158.625,
     "hit": 160.0,
-    "lane": 1,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 159.025,
-    "hit": 160.4,
     "lane": 2,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 159.225,
-    "hit": 160.6,
+    "spawn": 159.625,
+    "hit": 161.0,
     "lane": 3,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 160.025,
-    "hit": 161.4,
-    "lane": 1,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 160.425,
-    "hit": 161.8,
+    "spawn": 159.825,
+    "hit": 161.2,
     "lane": 2,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 160.625,
-    "hit": 162.0,
-    "lane": 1,
+    "spawn": 160.825,
+    "hit": 162.2,
+    "lane": 3,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 161.225,
     "hit": 162.6,
-    "lane": 3,
+    "lane": 2,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 161.625,
-    "hit": 163.0,
+    "spawn": 161.425,
+    "hit": 162.8,
+    "lane": 1,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
+    "spawn": 161.825,
+    "hit": 163.2,
     "lane": 0,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
+    "spawn": 162.225,
+    "hit": 163.6,
+    "lane": 1,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 162.625,
     "hit": 164.0,
-    "lane": 2,
+    "lane": 3,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 163.225,
-    "hit": 164.6,
+    "spawn": 163.025,
+    "hit": 164.4,
     "lane": 0,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 163.625,
-    "hit": 165.0,
-    "lane": 2,
+    "spawn": 163.425,
+    "hit": 164.8,
+    "lane": 3,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 164.425,
     "hit": 165.8,
-    "lane": 1,
+    "lane": 2,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 164.625,
     "hit": 166.0,
-    "lane": 2,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 164.825,
-    "hit": 166.2,
     "lane": 0,
     "stage": 5,
     "speed": 480.0
@@ -1442,8 +1554,15 @@
     "speed": 480.0
   },
   {
-    "spawn": 165.825,
-    "hit": 167.2,
+    "spawn": 166.025,
+    "hit": 167.4,
+    "lane": 3,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
+    "spawn": 166.225,
+    "hit": 167.6,
     "lane": 0,
     "stage": 5,
     "speed": 480.0
@@ -1451,6 +1570,13 @@
   {
     "spawn": 166.425,
     "hit": 167.8,
+    "lane": 1,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
+    "spawn": 166.625,
+    "hit": 168.0,
     "lane": 2,
     "stage": 5,
     "speed": 480.0
@@ -1463,37 +1589,23 @@
     "speed": 480.0
   },
   {
-    "spawn": 167.425,
-    "hit": 168.8,
-    "lane": 2,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 167.625,
-    "hit": 169.0,
+    "spawn": 168.025,
+    "hit": 169.4,
     "lane": 1,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 167.825,
-    "hit": 169.2,
-    "lane": 3,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 168.225,
     "hit": 169.6,
-    "lane": 1,
+    "lane": 0,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 168.425,
     "hit": 169.8,
-    "lane": 0,
+    "lane": 1,
     "stage": 5,
     "speed": 480.0
   },
@@ -1512,44 +1624,37 @@
     "speed": 480.0
   },
   {
-    "spawn": 169.625,
-    "hit": 171.0,
-    "lane": 1,
+    "spawn": 170.425,
+    "hit": 171.8,
+    "lane": 0,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 170.625,
     "hit": 172.0,
-    "lane": 2,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 170.825,
-    "hit": 172.2,
     "lane": 3,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 171.025,
-    "hit": 172.4,
-    "lane": 0,
+    "spawn": 171.425,
+    "hit": 172.8,
+    "lane": 2,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 171.225,
-    "hit": 172.6,
-    "lane": 1,
+    "spawn": 171.625,
+    "hit": 173.0,
+    "lane": 0,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 172.025,
     "hit": 173.4,
-    "lane": 0,
+    "lane": 3,
     "stage": 5,
     "speed": 480.0
   },
@@ -1561,36 +1666,22 @@
     "speed": 480.0
   },
   {
-    "spawn": 172.425,
-    "hit": 173.8,
-    "lane": 3,
+    "spawn": 172.825,
+    "hit": 174.2,
+    "lane": 1,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 172.625,
-    "hit": 174.0,
+    "spawn": 173.825,
+    "hit": 175.2,
     "lane": 2,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 172.825,
-    "hit": 174.2,
-    "lane": 0,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 173.625,
-    "hit": 175.0,
-    "lane": 3,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 174.025,
-    "hit": 175.4,
+    "spawn": 174.625,
+    "hit": 176.0,
     "lane": 0,
     "stage": 5,
     "speed": 480.0
@@ -1603,142 +1694,114 @@
     "speed": 480.0
   },
   {
-    "spawn": 175.425,
-    "hit": 176.8,
-    "lane": 2,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 176.025,
-    "hit": 177.4,
-    "lane": 3,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 176.225,
-    "hit": 177.6,
-    "lane": 2,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 176.625,
-    "hit": 178.0,
+    "spawn": 175.225,
+    "hit": 176.6,
     "lane": 0,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
+    "spawn": 175.825,
+    "hit": 177.2,
+    "lane": 1,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 176.825,
     "hit": 178.2,
-    "lane": 2,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 177.025,
-    "hit": 178.4,
-    "lane": 1,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 177.625,
-    "hit": 179.0,
-    "lane": 0,
+    "lane": 3,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 177.825,
     "hit": 179.2,
-    "lane": 3,
+    "lane": 2,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 178.025,
-    "hit": 179.4,
+    "spawn": 178.425,
+    "hit": 179.8,
     "lane": 0,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 178.225,
-    "hit": 179.6,
+    "spawn": 178.625,
+    "hit": 180.0,
     "lane": 3,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 178.825,
-    "hit": 180.2,
-    "lane": 0,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 179.025,
     "hit": 180.4,
-    "lane": 1,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 179.225,
-    "hit": 180.6,
     "lane": 0,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 179.425,
-    "hit": 180.8,
-    "lane": 3,
+    "spawn": 180.025,
+    "hit": 181.4,
+    "lane": 1,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
+    "spawn": 180.225,
+    "hit": 181.6,
+    "lane": 2,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 180.425,
     "hit": 181.8,
-    "lane": 1,
+    "lane": 0,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 180.825,
-    "hit": 182.2,
-    "lane": 2,
+    "spawn": 180.625,
+    "hit": 182.0,
+    "lane": 3,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
+    "spawn": 181.625,
+    "hit": 183.0,
+    "lane": 0,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 181.825,
     "hit": 183.2,
-    "lane": 0,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 182.025,
-    "hit": 183.4,
-    "lane": 2,
+    "lane": 3,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 182.625,
     "hit": 184.0,
-    "lane": 3,
+    "lane": 1,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
+    "spawn": 183.225,
+    "hit": 184.6,
+    "lane": 0,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 183.425,
     "hit": 184.8,
-    "lane": 1,
+    "lane": 2,
     "stage": 5,
     "speed": 480.0
   },
@@ -1750,6 +1813,13 @@
     "speed": 480.0
   },
   {
+    "spawn": 184.025,
+    "hit": 185.4,
+    "lane": 2,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
     "spawn": 184.825,
     "hit": 186.2,
     "lane": 1,
@@ -1757,71 +1827,85 @@
     "speed": 480.0
   },
   {
-    "spawn": 185.025,
-    "hit": 186.4,
-    "lane": 0,
-    "stage": 5,
-    "speed": 480.0
-  },
-  {
-    "spawn": 186.025,
-    "hit": 187.4,
-    "lane": 1,
+    "spawn": 185.825,
+    "hit": 187.2,
+    "lane": 2,
     "stage": 5,
     "speed": 480.0
   },
   {
     "spawn": 186.225,
     "hit": 187.6,
-    "lane": 0,
+    "lane": 1,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 186.425,
-    "hit": 187.8,
+    "spawn": 187.025,
+    "hit": 188.4,
+    "lane": 2,
+    "stage": 5,
+    "speed": 480.0
+  },
+  {
+    "spawn": 187.825,
+    "hit": 189.2,
     "lane": 3,
     "stage": 5,
     "speed": 480.0
   },
   {
-    "spawn": 190.7308,
-    "hit": 192.0,
+    "spawn": 188.225,
+    "hit": 189.6,
     "lane": 0,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
-    "spawn": 191.3308,
-    "hit": 192.6,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0
+    "stage": 5,
+    "speed": 480.0
   },
   {
     "spawn": 191.5308,
     "hit": 192.8,
+    "lane": 0,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 191.7308,
+    "hit": 193.0,
     "lane": 3,
     "stage": 6,
     "speed": 520.0
   },
   {
-    "spawn": 192.1308,
-    "hit": 193.4,
-    "lane": 1,
+    "spawn": 191.9308,
+    "hit": 193.2,
+    "lane": 2,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 192.3308,
+    "hit": 193.6,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 192.5308,
     "hit": 193.8,
-    "lane": 3,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 192.7308,
     "hit": 194.0,
+    "lane": 1,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 192.9308,
+    "hit": 194.2,
     "lane": 2,
     "stage": 6,
     "speed": 520.0
@@ -1836,28 +1920,35 @@
   {
     "spawn": 193.7308,
     "hit": 195.0,
+    "lane": 1,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 194.3308,
+    "hit": 195.6,
     "lane": 3,
     "stage": 6,
     "speed": 520.0
   },
   {
-    "spawn": 194.1308,
-    "hit": 195.4,
+    "spawn": 194.5308,
+    "hit": 195.8,
     "lane": 0,
     "stage": 6,
     "speed": 520.0
   },
   {
-    "spawn": 194.9308,
-    "hit": 196.2,
-    "lane": 1,
+    "spawn": 195.3308,
+    "hit": 196.6,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 195.5308,
     "hit": 196.8,
-    "lane": 2,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0
   },
@@ -1869,15 +1960,29 @@
     "speed": 520.0
   },
   {
-    "spawn": 196.5308,
-    "hit": 197.8,
+    "spawn": 195.9308,
+    "hit": 197.2,
     "lane": 2,
     "stage": 6,
     "speed": 520.0
   },
   {
-    "spawn": 196.7308,
-    "hit": 198.0,
+    "spawn": 196.5308,
+    "hit": 197.8,
+    "lane": 1,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 196.9308,
+    "hit": 198.2,
+    "lane": 0,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 197.1308,
+    "hit": 198.4,
     "lane": 3,
     "stage": 6,
     "speed": 520.0
@@ -1885,7 +1990,14 @@
   {
     "spawn": 197.3308,
     "hit": 198.6,
-    "lane": 0,
+    "lane": 2,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 197.9308,
+    "hit": 199.2,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0
   },
@@ -1899,42 +2011,49 @@
   {
     "spawn": 198.3308,
     "hit": 199.6,
-    "lane": 1,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 198.7308,
     "hit": 200.0,
-    "lane": 0,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 198.9308,
     "hit": 200.2,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
-    "spawn": 199.3308,
-    "hit": 200.6,
-    "lane": 3,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 199.5308,
     "hit": 200.8,
-    "lane": 2,
+    "lane": 3,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 199.7308,
+    "hit": 201.0,
+    "lane": 1,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 199.9308,
+    "hit": 201.2,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 200.1308,
     "hit": 201.4,
-    "lane": 3,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0
   },
@@ -1946,9 +2065,16 @@
     "speed": 520.0
   },
   {
+    "spawn": 201.5308,
+    "hit": 202.8,
+    "lane": 2,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
     "spawn": 201.7308,
     "hit": 203.0,
-    "lane": 2,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0
   },
@@ -1960,29 +2086,36 @@
     "speed": 520.0
   },
   {
-    "spawn": 202.1308,
-    "hit": 203.4,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
-    "spawn": 202.3308,
-    "hit": 203.6,
-    "lane": 1,
+    "spawn": 202.5308,
+    "hit": 203.8,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 202.7308,
     "hit": 204.0,
+    "lane": 1,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 202.9308,
+    "hit": 204.2,
+    "lane": 0,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 203.1308,
+    "hit": 204.4,
     "lane": 2,
     "stage": 6,
     "speed": 520.0
   },
   {
-    "spawn": 203.5308,
-    "hit": 204.8,
+    "spawn": 203.3308,
+    "hit": 204.6,
     "lane": 1,
     "stage": 6,
     "speed": 520.0
@@ -1990,20 +2123,27 @@
   {
     "spawn": 203.7308,
     "hit": 205.0,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
-    "spawn": 204.3308,
-    "hit": 205.6,
     "lane": 0,
     "stage": 6,
     "speed": 520.0
   },
   {
-    "spawn": 205.1308,
-    "hit": 206.4,
+    "spawn": 204.1308,
+    "hit": 205.4,
+    "lane": 2,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 204.7308,
+    "hit": 206.0,
+    "lane": 1,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 204.9308,
+    "hit": 206.2,
     "lane": 2,
     "stage": 6,
     "speed": 520.0
@@ -2011,41 +2151,41 @@
   {
     "spawn": 205.3308,
     "hit": 206.6,
-    "lane": 1,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 205.7308,
     "hit": 207.0,
-    "lane": 2,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 206.1308,
     "hit": 207.4,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
-    "spawn": 206.3308,
-    "hit": 207.6,
-    "lane": 1,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 206.5308,
     "hit": 207.8,
-    "lane": 2,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 207.1308,
     "hit": 208.4,
+    "lane": 2,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 207.3308,
+    "hit": 208.6,
     "lane": 0,
     "stage": 6,
     "speed": 520.0
@@ -2060,41 +2200,27 @@
   {
     "spawn": 207.9308,
     "hit": 209.2,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
-    "spawn": 208.1308,
-    "hit": 209.4,
     "lane": 0,
     "stage": 6,
     "speed": 520.0
   },
   {
-    "spawn": 208.3308,
-    "hit": 209.6,
+    "spawn": 208.7308,
+    "hit": 210.0,
     "lane": 3,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
-    "spawn": 208.9308,
-    "hit": 210.2,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
-    "spawn": 209.1308,
-    "hit": 210.4,
-    "lane": 2,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 209.5308,
     "hit": 210.8,
+    "lane": 2,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 209.7308,
+    "hit": 211.0,
     "lane": 0,
     "stage": 6,
     "speed": 520.0
@@ -2102,14 +2228,14 @@
   {
     "spawn": 209.9308,
     "hit": 211.2,
-    "lane": 2,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0
   },
   {
-    "spawn": 210.3308,
-    "hit": 211.6,
-    "lane": 1,
+    "spawn": 210.5308,
+    "hit": 211.8,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0
   },
@@ -2121,57 +2247,113 @@
     "speed": 520.0
   },
   {
+    "spawn": 211.1308,
+    "hit": 212.4,
+    "lane": 1,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
     "spawn": 211.3308,
     "hit": 212.6,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
-    "spawn": 211.9308,
-    "hit": 213.2,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
-    "spawn": 212.5308,
-    "hit": 213.8,
     "lane": 3,
     "stage": 6,
     "speed": 520.0
   },
   {
-    "spawn": 212.9308,
-    "hit": 214.2,
-    "lane": 2,
+    "spawn": 211.5308,
+    "hit": 212.8,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0
   },
   {
-    "spawn": 213.7308,
-    "hit": 215.0,
+    "spawn": 211.7308,
+    "hit": 213.0,
     "lane": 3,
     "stage": 6,
     "speed": 520.0
   },
   {
-    "spawn": 214.5308,
-    "hit": 215.8,
+    "spawn": 212.1308,
+    "hit": 213.4,
     "lane": 1,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 212.3308,
+    "hit": 213.6,
+    "lane": 0,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 213.1308,
+    "hit": 214.4,
+    "lane": 3,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 213.5308,
+    "hit": 214.8,
+    "lane": 0,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 213.9308,
+    "hit": 215.2,
+    "lane": 2,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 214.3308,
+    "hit": 215.6,
+    "lane": 3,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 214.7308,
+    "hit": 216.0,
+    "lane": 1,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 214.9308,
+    "hit": 216.2,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 215.1308,
     "hit": 216.4,
-    "lane": 0,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0
   },
   {
-    "spawn": 215.5308,
-    "hit": 216.8,
+    "spawn": 215.3308,
+    "hit": 216.6,
+    "lane": 1,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 215.7308,
+    "hit": 217.0,
+    "lane": 2,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 215.9308,
+    "hit": 217.2,
     "lane": 1,
     "stage": 6,
     "speed": 520.0
@@ -2179,14 +2361,14 @@
   {
     "spawn": 216.3308,
     "hit": 217.6,
-    "lane": 3,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0
   },
   {
-    "spawn": 216.5308,
-    "hit": 217.8,
-    "lane": 2,
+    "spawn": 216.9308,
+    "hit": 218.2,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0
   },
@@ -2198,36 +2380,36 @@
     "speed": 520.0
   },
   {
+    "spawn": 217.5308,
+    "hit": 218.8,
+    "lane": 3,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
     "spawn": 217.7308,
     "hit": 219.0,
-    "lane": 3,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0
   },
   {
-    "spawn": 218.5308,
-    "hit": 219.8,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
-    "spawn": 218.7308,
-    "hit": 220.0,
-    "lane": 3,
+    "spawn": 218.1308,
+    "hit": 219.4,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 218.9308,
     "hit": 220.2,
-    "lane": 1,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0
   },
   {
-    "spawn": 219.1308,
-    "hit": 220.4,
+    "spawn": 219.7308,
+    "hit": 221.0,
     "lane": 2,
     "stage": 6,
     "speed": 520.0
@@ -2235,7 +2417,7 @@
   {
     "spawn": 219.9308,
     "hit": 221.2,
-    "lane": 0,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0
   },
@@ -2247,23 +2429,23 @@
     "speed": 520.0
   },
   {
-    "spawn": 220.9308,
-    "hit": 222.2,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
-    "spawn": 221.5308,
-    "hit": 222.8,
+    "spawn": 220.3308,
+    "hit": 221.6,
     "lane": 2,
     "stage": 6,
     "speed": 520.0
   },
   {
-    "spawn": 221.7308,
-    "hit": 223.0,
+    "spawn": 220.7308,
+    "hit": 222.0,
     "lane": 3,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 221.1308,
+    "hit": 222.4,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0
   },
@@ -2275,16 +2457,9 @@
     "speed": 520.0
   },
   {
-    "spawn": 222.1308,
-    "hit": 223.4,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
-    "spawn": 222.3308,
-    "hit": 223.6,
-    "lane": 1,
+    "spawn": 222.5308,
+    "hit": 223.8,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0
   },
@@ -2296,72 +2471,44 @@
     "speed": 520.0
   },
   {
-    "spawn": 223.3308,
-    "hit": 224.6,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
-    "spawn": 223.5308,
-    "hit": 224.8,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
-    "spawn": 223.7308,
-    "hit": 225.0,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
     "spawn": 223.9308,
     "hit": 225.2,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
-    "spawn": 224.1308,
-    "hit": 225.4,
-    "lane": 3,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 224.5308,
     "hit": 225.8,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
-    "spawn": 225.1308,
-    "hit": 226.4,
-    "lane": 1,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 225.3308,
     "hit": 226.6,
-    "lane": 0,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0
   },
   {
-    "spawn": 225.7308,
-    "hit": 227.0,
-    "lane": 2,
+    "spawn": 225.5308,
+    "hit": 226.8,
+    "lane": 1,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 226.1308,
+    "hit": 227.4,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 226.3308,
     "hit": 227.6,
-    "lane": 3,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0
   },
@@ -2373,9 +2520,9 @@
     "speed": 520.0
   },
   {
-    "spawn": 226.9308,
-    "hit": 228.2,
-    "lane": 3,
+    "spawn": 226.7308,
+    "hit": 228.0,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0
   },
@@ -2387,30 +2534,16 @@
     "speed": 520.0
   },
   {
-    "spawn": 227.5308,
-    "hit": 228.8,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
     "spawn": 227.9308,
     "hit": 229.2,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0
-  },
-  {
-    "spawn": 228.1308,
-    "hit": 229.4,
-    "lane": 0,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0
   },
   {
     "spawn": 228.3308,
     "hit": 229.6,
-    "lane": 1,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0
   },
@@ -2424,7 +2557,7 @@
   {
     "spawn": 229.1308,
     "hit": 230.4,
-    "lane": 1,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0
   },
@@ -2432,6 +2565,13 @@
     "spawn": 229.3308,
     "hit": 230.6,
     "lane": 0,
+    "stage": 6,
+    "speed": 520.0
+  },
+  {
+    "spawn": 229.5308,
+    "hit": 230.8,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0
   }

@@ -6,11 +6,11 @@ from typing import List, Dict, Optional
 
 @dataclass
 class Note:
-    hit: float    # seconds when note should be hit
-    spawn: float  # seconds when note should spawn
-    lane: int     # 0..3
-    stage: int    # 1..6
-    speed: float  # px/s used for this note
+    hit: float
+    spawn: float
+    lane: int
+    stage: int
+    speed: float
 
 
 def pick_lane(
@@ -28,12 +28,11 @@ def pick_lane(
     if prev_lane is None or not prefer_nearby:
         return rng.choice(candidates)
 
-    # Bias closer lanes, but allow more jumps as jumpiness increases (0..1)
     weights = []
     for l in candidates:
         d = abs(l - prev_lane)
-        base = 1.0 / (1.0 + d)                  # prefers nearby lanes
-        w = (1.0 - jumpiness) * base + jumpiness * 1.0  # mix with uniform
+        base = 1.0 / (1.0 + d)  # nearer lanes heavier
+        w = (1.0 - jumpiness) * base + jumpiness * 1.0  # blend with uniform
         weights.append(w)
 
     return rng.choices(candidates, weights=weights, k=1)[0]
@@ -45,8 +44,8 @@ def generate_stage_notes(
     bpm: float,
     offset: float,
     stage_index: int,
-    stage_start: float,
-    stage_end: float,
+    hit_start: float,
+    hit_end: float,
     grid_beats: float,
     density: float,
     max_gap_beats: float,
@@ -57,37 +56,27 @@ def generate_stage_notes(
     prefer_nearby: bool,
     jumpiness: float,
 ) -> List[Note]:
-    """
-    Generates notes for a single stage in the time window [stage_start, stage_end]
-    using a beat grid and max-gap constraint.
-
-    Chart output is time-based and includes per-note speed so your Phaser update()
-    can stay synced even when speed changes across stages.
-    """
     spb = 60.0 / bpm
 
-    # Convert stage time window to beats (relative to offset)
-    start_beat = max(0.0, (stage_start - offset) / spb)
-    end_beat = max(0.0, (stage_end - offset) / spb)
+    start_beat = max(0.0, (hit_start - offset) / spb)
+    end_beat = max(0.0, (hit_end - offset) / spb)
 
-    # Snap start to the next grid line
     b = (start_beat // grid_beats) * grid_beats
     if b < start_beat:
         b += grid_beats
 
-    travel_time = (hit_y - spawn_y) / speed  # seconds to fall from spawn_y to hit_y
+    travel_time = (hit_y - spawn_y) / speed
 
     notes: List[Note] = []
     prev_lane: Optional[int] = None
-    gap_beats = max_gap_beats  # encourage an early note
+    gap_beats = max_gap_beats  # encourage early note
 
     while b <= end_beat:
         should_place = (rng.random() < density) or (gap_beats >= max_gap_beats)
 
         if should_place:
             lane = pick_lane(
-                rng,
-                prev_lane,
+                rng, prev_lane,
                 no_jacks=no_jacks,
                 prefer_nearby=prefer_nearby,
                 jumpiness=jumpiness,
@@ -96,8 +85,7 @@ def generate_stage_notes(
             hit_t = offset + b * spb
             spawn_t = hit_t - travel_time
 
-            # Ensure hit is inside stage window and spawn isn't before song start
-            if stage_start <= hit_t <= stage_end and spawn_t >= 0.0:
+            if hit_start <= hit_t <= hit_end and spawn_t >= 0.0:
                 notes.append(Note(
                     hit=hit_t,
                     spawn=spawn_t,
@@ -120,60 +108,25 @@ def generate_stage_notes(
 def main():
     rng = random.Random(42)
 
-    # --- Song constants (given) ---
+    # --- Song constants ---
     bpm = 75.0
     duration_seconds = 231.0
-    offset = 0.20  # tweak this if hits feel globally early/late
+    offset = 0.20
 
-    # --- Popup / inter-stage gap planning ---
-    # IMPORTANT: set this to be >= your popup animation total time (in seconds).
-    POPUP_GAP = 2.0
-
-    # --- Phaser geometry assumptions ---
-    # spawnY should match your Phaser this.spawnY
+    # --- Match Phaser geometry ---
     spawn_y = -60.0
+    hit_y = 600.0   # IMPORTANT: set this to your Phaser hitY for perfect visual sync
 
-    # hit_y must match your Phaser hitY in pixels for perfect visual sync.
-    # If your canvas is ~720px tall and hitY is ~0.82*height, 600 is a common ballpark.
-    # Best: set hit_y to your actual hitY (print it once in Phaser).
-    hit_y = 600.0
+    # --- Popup timing (must match your showStagePopup total on-screen time) ---
+    popup_seconds = 1.4
 
-    # --- Raw stage boundaries (conceptual) ---
-    raw_stages = [
-        (0.0, 35.0),
-        (35.0, 70.0),
-        (70.0, 105.0),
-        (105.0, 145.0),
-        (145.0, 190.0),
-        (190.0, 231.0),
-    ]
+    # --- Miss window in pixels in your Phaser code ---
+    miss_px = 60.0
 
-    # --- Convert to playable windows (this is the key!) ---
-    # We shrink each stage so there is a clean POPUP_GAP with no notes on screen.
-    stages = []
-    for i, (raw_start, raw_end) in enumerate(raw_stages, start=1):
-        play_start = raw_start + (POPUP_GAP if i > 1 else 0.0)
-        play_end = raw_end - (POPUP_GAP if i < len(raw_stages) else 0.0)
+    # Raw conceptual stage boundaries (where popup triggers)
+    boundaries = [0.0, 35.0, 70.0, 105.0, 145.0, 190.0, 231.0]  # 6 stages
 
-        # Safety: don't allow negative/invalid windows
-        play_start = max(0.0, play_start)
-        play_end = min(duration_seconds, play_end)
-
-        if play_end <= play_start:
-            raise ValueError(f"Stage {i} has no playable time after applying POPUP_GAP. Reduce POPUP_GAP.")
-
-        stages.append({
-            "stage": i,
-            "start": play_start,
-            "end": play_end,
-        })
-
-    # --- Difficulty ramp (6 stages) ---
-    # grid_beats: 1.0 quarters, 0.5 eighths, 0.25 sixteenths
-    # density: probability per grid slot
-    # max_gap_beats: forces a note if too much silence
-    # speed: px/s for this stage (must match your Phaser movement formula)
-    # jumpiness: 0 easy (nearby lanes), 1 hard (uniform random)
+    # Difficulty ramp per stage
     params = [
         dict(grid_beats=1.0,  density=0.70, max_gap_beats=2.0,  speed=320.0, jumpiness=0.05),
         dict(grid_beats=0.5,  density=0.45, max_gap_beats=2.0,  speed=360.0, jumpiness=0.10),
@@ -184,27 +137,70 @@ def main():
     ]
 
     all_notes: List[Note] = []
-    for s in stages:
-        p = params[s["stage"] - 1]
-        all_notes.extend(generate_stage_notes(
+
+    # Build per-stage HIT windows that guarantee:
+    # - no SPAWNS during popup
+    # - last note clears hit line before popup
+    for stage_idx in range(1, 7):
+        start_boundary = boundaries[stage_idx - 1]
+        end_boundary = boundaries[stage_idx]
+        p = params[stage_idx - 1]
+        speed = p["speed"]
+
+        travel_time = (hit_y - spawn_y) / speed
+        clear_time = miss_px / speed  # time after hit until it passes hitY+missPx
+
+        # Notes should STOP early enough that they're gone by popup start at end_boundary
+        hit_end = end_boundary - clear_time
+
+        # Notes should START late enough that their SPAWN occurs after popup ends.
+        # For stages after the first, popup happens at start_boundary.
+        if stage_idx == 1:
+            hit_start = start_boundary
+        else:
+            hit_start = start_boundary + popup_seconds + travel_time
+
+        # Also: avoid generating hits during the popup window after end_boundary (except last stage)
+        if stage_idx < 6:
+            # This isn't strictly necessary if you compute next stage start correctly,
+            # but it prevents edge cases near boundaries.
+            hit_end = min(hit_end, end_boundary - 0.01)
+
+        # Clamp to song duration
+        hit_start = max(0.0, hit_start)
+        hit_end = min(duration_seconds, hit_end)
+
+        if hit_end <= hit_start:
+            raise ValueError(
+                f"Stage {stage_idx} has no playable time.\n"
+                f"Try reducing popup_seconds or miss_px, or lowering speed.\n"
+                f"(hit_start={hit_start:.3f}, hit_end={hit_end:.3f})"
+            )
+
+        notes = generate_stage_notes(
             rng,
             bpm=bpm,
             offset=offset,
-            stage_index=s["stage"],
-            stage_start=s["start"],
-            stage_end=s["end"],
+            stage_index=stage_idx,
+            hit_start=hit_start,
+            hit_end=hit_end,
             grid_beats=p["grid_beats"],
             density=p["density"],
             max_gap_beats=p["max_gap_beats"],
-            speed=p["speed"],
+            speed=speed,
             spawn_y=spawn_y,
             hit_y=hit_y,
             no_jacks=True,
             prefer_nearby=True,
             jumpiness=p["jumpiness"],
-        ))
+        )
+        all_notes.extend(notes)
 
-    # Sort by spawn time for in-game spawning
+        print(
+            f"Stage {stage_idx}: hits in [{hit_start:.2f}, {hit_end:.2f}] "
+            f"(speed={speed:.0f}px/s, travel={travel_time:.2f}s, clear={clear_time:.2f}s)"
+        )
+
     all_notes.sort(key=lambda n: n.spawn)
 
     out: List[Dict] = [
@@ -222,11 +218,7 @@ def main():
     with open("chart.json", "w") as f:
         json.dump(out, f, indent=2)
 
-    print(f"Wrote {len(out)} notes to chart.json")
-    print(f"Popup gap: {POPUP_GAP}s (no notes in those transition windows)")
-    print("Playable stage windows:")
-    for s in stages:
-        print(f"  Stage {s['stage']}: {s['start']:.2f}s -> {s['end']:.2f}s")
+    print(f"\nWrote {len(out)} notes to chart.json")
 
 
 if __name__ == "__main__":
