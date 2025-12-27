@@ -3,6 +3,10 @@ import random
 from dataclasses import dataclass
 from typing import List, Dict, Optional
 
+#constants
+HOLD_PROB = 0.12        # 12% of notes are holds
+HOLD_MIN_BEATS = 1.0   # minimum hold length
+HOLD_MAX_BEATS = 3.0   # maximum hold length
 
 @dataclass
 class Note:
@@ -11,7 +15,8 @@ class Note:
     lane: int
     stage: int
     speed: float
-
+    type: str        # "tap" or "hold"
+    end: float       # end hit time (== hit for taps)
 
 def pick_lane(
     rng: random.Random,
@@ -86,13 +91,31 @@ def generate_stage_notes(
             spawn_t = hit_t - travel_time
 
             if hit_start <= hit_t <= hit_end and spawn_t >= 0.0:
-                notes.append(Note(
-                    hit=hit_t,
-                    spawn=spawn_t,
-                    lane=lane,
-                    stage=stage_index,
-                    speed=speed,
-                ))
+                # Decide tap vs hold
+                is_hold = rng.random() < HOLD_PROB
+                hold_beats = rng.uniform(HOLD_MIN_BEATS, HOLD_MAX_BEATS) if is_hold else 0.0
+                end_hit_t = hit_t + hold_beats * spb
+
+                # Clamp hold end so it doesn't cross stage end
+                end_hit_t = min(end_hit_t, hit_end)
+
+                # Recompute spawn based on *start* hit
+                spawn_t = hit_t - travel_time
+
+                if hit_start <= hit_t <= hit_end and spawn_t >= 0.0:
+                    notes.append(Note(
+                        hit=hit_t,
+                        spawn=spawn_t,
+                        lane=lane,
+                        stage=stage_index,
+                        speed=speed,
+                        # NEW FIELDS
+                        type="hold" if is_hold and end_hit_t > hit_t else "tap",
+                        end=end_hit_t if is_hold and end_hit_t > hit_t else hit_t,
+                    ))
+                    prev_lane = lane
+                    gap_beats = 0.0
+
                 prev_lane = lane
                 gap_beats = 0.0
             else:
@@ -203,16 +226,17 @@ def main():
 
     all_notes.sort(key=lambda n: n.spawn)
 
-    out: List[Dict] = [
+    out = [
         {
             "spawn": round(n.spawn, 4),
             "hit": round(n.hit, 4),
+            "end": round(n.end, 4),
             "lane": n.lane,
             "stage": n.stage,
             "speed": round(n.speed, 2),
+            "type": n.type,
         }
         for n in all_notes
-        if 0.0 <= n.hit <= duration_seconds
     ]
 
     with open("chart.json", "w") as f:
