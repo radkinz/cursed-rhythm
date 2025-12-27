@@ -14,6 +14,10 @@ class PlayScene extends Phaser.Scene {
     preload() {
         this.load.audio("song", "audio/song.mp3");
         this.load.json("chart", "charts/chart.json");
+        this.load.image("arrowL", "sprites/arrow_left.png");
+        this.load.image("arrowD", "sprites/arrow_down.png");
+        this.load.image("arrowU", "sprites/arrow_up.png");
+        this.load.image("arrowR", "sprites/arrow_right.png");
     }
 
     create() {
@@ -131,21 +135,29 @@ class PlayScene extends Phaser.Scene {
     }
 
     spawnNote(laneIndex) {
-        const { width } = this.scale;
-
         const lane = this.laneRects[laneIndex];
         if (!lane) return;
 
+        const keys = ["arrowL", "arrowD", "arrowU", "arrowR"];
+        const key = keys[laneIndex];
+
         const x = lane.x;
-        const y = -20;
+        const y = -60;
 
-        const note = this.add.rectangle(x, y, lane.width * 0.82, 34, 0xffffff);
+        const note = this.add.image(x, y, key);
+        note.setOrigin(0.5);
 
-        this.notes.push({
-            laneIndex,
-            sprite: note
-        });
+        // Scale image to fit lane nicely
+        const targetWidth = lane.width * 0.9;
+        const scale = targetWidth / note.width;
+        note.setScale(scale);
+
+        // (Optional) make hit-testing easier even if sprite is small
+        // note.setDisplaySize(lane.width * 0.75, lane.width * 0.75);
+
+        this.notes.push({ laneIndex, sprite: note });
     }
+
 
     tryHit(laneIndex) {
         if (!this.notes?.length) return;
