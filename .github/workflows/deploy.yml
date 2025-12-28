@@ -2,8 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -19,20 +18,34 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version: 20
           cache: npm
 
-      - name: Install dependencies
+      - name: Install
         run: npm ci
 
-      - name: Build Vite app
+      - name: Clean output folder
+        run: rm -rf dist
+
+      - name: Build
         run: npm run build
+
+      - name: Verify build is production (must NOT reference /src/)
+        run: |
+          test -f dist/index.html
+          if grep -q "/src/main" dist/index.html; then
+            echo "ERROR: dist/index.html still references /src/main.* (dev build)."
+            echo "First 80 lines of dist/index.html:"
+            sed -n '1,80p' dist/index.html
+            exit 1
+          fi
+          echo "OK: dist/index.html looks like a production build."
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
@@ -46,6 +59,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
