@@ -30,7 +30,7 @@ export default function ScorePage({
     const accPct = Math.round(clamp(accuracy, 0, 1) * 1000) / 10;
 
     const { rank, title, vibe } = getRank(accuracy);
-    const rankImgSrc = `/assets/${rank}.png`;
+    const rankImgSrc = `/scoreImgs/${rank}.png`;
 
     const messages = {
         legendary: "Okay wow...you're actually a PERFECT puppy. Ruff! ♡",

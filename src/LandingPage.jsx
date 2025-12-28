@@ -43,8 +43,8 @@ export default function LandingPage({ onStart }) {
                     <kbd style={styles.kbd}>↓</kbd>
                     <kbd style={styles.kbd}>↑</kbd>
                     <kbd style={styles.kbd}>→</kbd>
-                    <span style={{ opacity: 0.65 }}> · </span>
-                    <kbd style={styles.kbd}>Space</kbd> Pause
+                    {/* <span style={{ opacity: 0.65 }}> · </span>
+                    <kbd style={styles.kbd}>Space</kbd> Pause */}
                 </div>
             </div>
         </div>
