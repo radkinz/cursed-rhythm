@@ -262,7 +262,7 @@ def main():
     # Difficulty ramp (tweak here)
     stage_subdiv =    [1, 2, 2, 2, 4, 4]
     stage_keep =      [0.40, 0.50, 0.60, 0.65, 0.70, 0.85]   # stage 6 harder
-    stage_min_gap =   [0.35, 0.33, 0.30, 0.28, 0.24, 0.19]   # stage 6 denser
+    stage_min_gap =   [0.35, 0.33, 0.30, 0.28, 0.24, 0.21]   # stage 6 denser
     stage_jumpiness = [0.15, 0.20, 0.22, 0.22, 0.26, 0.45]   # stage 6 more lane movement
 
     # Holds from clusters (NOT random)

@@ -2511,27 +2511,9 @@
     "type": "tap"
   },
   {
-    "spawn": 161.6208,
-    "hit": 162.89,
-    "end": 162.89,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 161.8208,
     "hit": 163.09,
     "end": 163.09,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 162.0208,
-    "hit": 163.29,
-    "end": 163.29,
     "lane": 2,
     "stage": 6,
     "speed": 520.0,
@@ -2541,16 +2523,7 @@
     "spawn": 162.2208,
     "hit": 163.49,
     "end": 163.49,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 162.4208,
-    "hit": 163.69,
-    "end": 163.69,
-    "lane": 1,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -2559,16 +2532,7 @@
     "spawn": 162.8208,
     "hit": 164.09,
     "end": 164.09,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 163.0208,
-    "hit": 164.29,
-    "end": 164.29,
-    "lane": 3,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -2577,15 +2541,6 @@
     "spawn": 163.2208,
     "hit": 164.49,
     "end": 164.49,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 163.4208,
-    "hit": 164.69,
-    "end": 164.69,
     "lane": 1,
     "stage": 6,
     "speed": 520.0,
@@ -2601,28 +2556,10 @@
     "type": "tap"
   },
   {
-    "spawn": 163.8208,
-    "hit": 165.09,
-    "end": 165.09,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 164.0208,
     "hit": 165.29,
     "end": 165.29,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 164.2208,
-    "hit": 165.49,
-    "end": 165.49,
-    "lane": 2,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -2631,7 +2568,7 @@
     "spawn": 164.4208,
     "hit": 165.69,
     "end": 165.69,
-    "lane": 1,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -2640,16 +2577,7 @@
     "spawn": 164.8208,
     "hit": 166.09,
     "end": 166.09,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 165.0208,
-    "hit": 166.29,
-    "end": 166.29,
-    "lane": 2,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -2664,19 +2592,10 @@
     "type": "tap"
   },
   {
-    "spawn": 165.6208,
-    "hit": 166.89,
-    "end": 166.89,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 165.8208,
     "hit": 167.09,
     "end": 167.09,
-    "lane": 0,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -2685,16 +2604,7 @@
     "spawn": 166.2208,
     "hit": 167.49,
     "end": 167.49,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 166.4208,
-    "hit": 167.69,
-    "end": 167.69,
-    "lane": 3,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -2709,15 +2619,6 @@
     "type": "tap"
   },
   {
-    "spawn": 166.8208,
-    "hit": 168.09,
-    "end": 168.09,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 167.0208,
     "hit": 168.29,
     "end": 168.29,
@@ -2727,28 +2628,10 @@
     "type": "tap"
   },
   {
-    "spawn": 167.2208,
-    "hit": 168.49,
-    "end": 168.49,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 167.4208,
     "hit": 168.69,
     "end": 168.69,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 167.6208,
-    "hit": 168.89,
-    "end": 168.89,
-    "lane": 0,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -2757,16 +2640,7 @@
     "spawn": 167.8208,
     "hit": 169.09,
     "end": 169.09,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 168.0208,
-    "hit": 169.29,
-    "end": 169.29,
-    "lane": 3,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -2775,16 +2649,7 @@
     "spawn": 168.4208,
     "hit": 169.69,
     "end": 169.69,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 168.6208,
-    "hit": 169.89,
-    "end": 169.89,
-    "lane": 3,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -2802,7 +2667,7 @@
     "spawn": 169.2208,
     "hit": 170.49,
     "end": 170.49,
-    "lane": 1,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -2820,15 +2685,6 @@
     "spawn": 170.0208,
     "hit": 171.29,
     "end": 171.29,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 170.2208,
-    "hit": 171.49,
-    "end": 171.49,
     "lane": 3,
     "stage": 6,
     "speed": 520.0,
@@ -2838,16 +2694,7 @@
     "spawn": 170.4208,
     "hit": 171.69,
     "end": 171.69,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 170.6208,
-    "hit": 171.89,
-    "end": 171.89,
-    "lane": 2,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -2856,16 +2703,7 @@
     "spawn": 170.8208,
     "hit": 172.09,
     "end": 172.09,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 171.0208,
-    "hit": 172.29,
-    "end": 172.29,
-    "lane": 3,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -2880,28 +2718,10 @@
     "type": "tap"
   },
   {
-    "spawn": 171.4208,
-    "hit": 172.69,
-    "end": 172.69,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 171.6208,
     "hit": 172.89,
     "end": 172.89,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 171.8208,
-    "hit": 173.09,
-    "end": 173.09,
-    "lane": 3,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -2919,7 +2739,7 @@
     "spawn": 172.4208,
     "hit": 173.69,
     "end": 173.69,
-    "lane": 2,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -2928,16 +2748,7 @@
     "spawn": 172.8208,
     "hit": 174.09,
     "end": 174.09,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 173.0208,
-    "hit": 174.29,
-    "end": 174.29,
-    "lane": 3,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -2946,15 +2757,6 @@
     "spawn": 173.2208,
     "hit": 174.49,
     "end": 174.49,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 173.4208,
-    "hit": 174.69,
-    "end": 174.69,
     "lane": 3,
     "stage": 6,
     "speed": 520.0,
@@ -2970,28 +2772,10 @@
     "type": "tap"
   },
   {
-    "spawn": 173.8208,
-    "hit": 175.09,
-    "end": 175.09,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 174.0208,
     "hit": 175.29,
     "end": 175.29,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 174.2208,
-    "hit": 175.49,
-    "end": 175.49,
-    "lane": 0,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3000,15 +2784,6 @@
     "spawn": 174.4208,
     "hit": 175.69,
     "end": 175.69,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 174.6208,
-    "hit": 175.89,
-    "end": 175.89,
     "lane": 3,
     "stage": 6,
     "speed": 520.0,
@@ -3024,27 +2799,9 @@
     "type": "tap"
   },
   {
-    "spawn": 175.0208,
-    "hit": 176.29,
-    "end": 176.29,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 175.2208,
     "hit": 176.49,
     "end": 176.49,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 175.4208,
-    "hit": 176.69,
-    "end": 176.69,
     "lane": 1,
     "stage": 6,
     "speed": 520.0,
@@ -3054,16 +2811,7 @@
     "spawn": 175.6208,
     "hit": 176.89,
     "end": 176.89,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 175.8208,
-    "hit": 177.09,
-    "end": 177.09,
-    "lane": 1,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3072,16 +2820,7 @@
     "spawn": 176.0208,
     "hit": 177.29,
     "end": 177.29,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 176.2208,
-    "hit": 177.49,
-    "end": 177.49,
-    "lane": 0,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3090,15 +2829,6 @@
     "spawn": 176.4208,
     "hit": 177.69,
     "end": 177.69,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 176.6208,
-    "hit": 177.89,
-    "end": 177.89,
     "lane": 3,
     "stage": 6,
     "speed": 520.0,
@@ -3108,15 +2838,6 @@
     "spawn": 176.8208,
     "hit": 178.09,
     "end": 178.09,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 177.0208,
-    "hit": 178.29,
-    "end": 178.29,
     "lane": 1,
     "stage": 6,
     "speed": 520.0,
@@ -3132,28 +2853,10 @@
     "type": "tap"
   },
   {
-    "spawn": 177.4208,
-    "hit": 178.69,
-    "end": 178.69,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 177.6208,
     "hit": 178.89,
     "end": 178.89,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 177.8208,
-    "hit": 179.09,
-    "end": 179.09,
-    "lane": 2,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3168,28 +2871,10 @@
     "type": "tap"
   },
   {
-    "spawn": 178.2208,
-    "hit": 179.49,
-    "end": 179.49,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 178.4208,
     "hit": 179.69,
     "end": 179.69,
     "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 178.6208,
-    "hit": 179.89,
-    "end": 179.89,
-    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3204,28 +2889,10 @@
     "type": "tap"
   },
   {
-    "spawn": 179.2208,
-    "hit": 180.49,
-    "end": 180.49,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 179.4208,
     "hit": 180.69,
     "end": 180.69,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 179.6208,
-    "hit": 180.89,
-    "end": 180.89,
-    "lane": 1,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3234,16 +2901,7 @@
     "spawn": 180.0208,
     "hit": 181.29,
     "end": 181.29,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 180.2208,
-    "hit": 181.49,
-    "end": 181.49,
-    "lane": 1,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3252,16 +2910,7 @@
     "spawn": 180.4208,
     "hit": 181.69,
     "end": 181.69,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 180.6208,
-    "hit": 181.89,
-    "end": 181.89,
-    "lane": 2,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3270,15 +2919,6 @@
     "spawn": 180.8208,
     "hit": 182.09,
     "end": 182.09,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 181.0208,
-    "hit": 182.29,
-    "end": 182.29,
     "lane": 2,
     "stage": 6,
     "speed": 520.0,
@@ -3294,27 +2934,9 @@
     "type": "tap"
   },
   {
-    "spawn": 181.4208,
-    "hit": 182.69,
-    "end": 182.69,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 181.6208,
     "hit": 182.89,
     "end": 182.89,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 181.8208,
-    "hit": 183.09,
-    "end": 183.09,
     "lane": 3,
     "stage": 6,
     "speed": 520.0,
@@ -3324,16 +2946,7 @@
     "spawn": 182.0208,
     "hit": 183.29,
     "end": 183.29,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 182.2208,
-    "hit": 183.49,
-    "end": 183.49,
-    "lane": 2,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3342,16 +2955,7 @@
     "spawn": 182.4208,
     "hit": 183.69,
     "end": 183.69,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 182.6208,
-    "hit": 183.89,
-    "end": 183.89,
-    "lane": 2,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3360,16 +2964,7 @@
     "spawn": 182.8208,
     "hit": 184.09,
     "end": 184.09,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 183.0208,
-    "hit": 184.29,
-    "end": 184.29,
-    "lane": 0,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3378,15 +2973,6 @@
     "spawn": 183.2208,
     "hit": 184.49,
     "end": 184.49,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 183.4208,
-    "hit": 184.69,
-    "end": 184.69,
     "lane": 1,
     "stage": 6,
     "speed": 520.0,
@@ -3396,16 +2982,7 @@
     "spawn": 183.6208,
     "hit": 184.89,
     "end": 184.89,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 183.8208,
-    "hit": 185.09,
-    "end": 185.09,
-    "lane": 3,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3414,16 +2991,7 @@
     "spawn": 184.0208,
     "hit": 185.29,
     "end": 185.29,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 184.2208,
-    "hit": 185.49,
-    "end": 185.49,
-    "lane": 1,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3432,16 +3000,7 @@
     "spawn": 184.4208,
     "hit": 185.69,
     "end": 185.69,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 184.6208,
-    "hit": 185.89,
-    "end": 185.89,
-    "lane": 1,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3450,16 +3009,7 @@
     "spawn": 184.8208,
     "hit": 186.09,
     "end": 186.09,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 185.0208,
-    "hit": 186.29,
-    "end": 186.29,
-    "lane": 1,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3468,15 +3018,6 @@
     "spawn": 185.2208,
     "hit": 186.49,
     "end": 186.49,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 185.4208,
-    "hit": 186.69,
-    "end": 186.69,
     "lane": 1,
     "stage": 6,
     "speed": 520.0,
@@ -3492,27 +3033,9 @@
     "type": "tap"
   },
   {
-    "spawn": 185.8208,
-    "hit": 187.09,
-    "end": 187.09,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 186.0208,
     "hit": 187.29,
     "end": 187.29,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 186.2208,
-    "hit": 187.49,
-    "end": 187.49,
     "lane": 2,
     "stage": 6,
     "speed": 520.0,
@@ -3528,28 +3051,10 @@
     "type": "tap"
   },
   {
-    "spawn": 186.6208,
-    "hit": 187.89,
-    "end": 187.89,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 186.8208,
     "hit": 188.09,
     "end": 188.09,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 187.0208,
-    "hit": 188.29,
-    "end": 188.29,
-    "lane": 0,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3564,28 +3069,10 @@
     "type": "tap"
   },
   {
-    "spawn": 187.4208,
-    "hit": 188.69,
-    "end": 188.69,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 187.6208,
     "hit": 188.89,
     "end": 188.89,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 187.8208,
-    "hit": 189.09,
-    "end": 189.09,
-    "lane": 2,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3594,16 +3081,7 @@
     "spawn": 188.0208,
     "hit": 189.29,
     "end": 189.29,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 188.2208,
-    "hit": 189.49,
-    "end": 189.49,
-    "lane": 1,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3612,16 +3090,7 @@
     "spawn": 188.4208,
     "hit": 189.69,
     "end": 189.69,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 188.6208,
-    "hit": 189.89,
-    "end": 189.89,
-    "lane": 3,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3636,28 +3105,10 @@
     "type": "tap"
   },
   {
-    "spawn": 189.0208,
-    "hit": 190.29,
-    "end": 190.29,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 189.2208,
     "hit": 190.49,
     "end": 190.49,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 189.4208,
-    "hit": 190.69,
-    "end": 190.69,
-    "lane": 1,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3666,15 +3117,6 @@
     "spawn": 189.6208,
     "hit": 190.89,
     "end": 190.89,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 189.8208,
-    "hit": 191.09,
-    "end": 191.09,
     "lane": 1,
     "stage": 6,
     "speed": 520.0,
@@ -3684,16 +3126,7 @@
     "spawn": 190.0208,
     "hit": 191.29,
     "end": 191.29,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 190.2208,
-    "hit": 191.49,
-    "end": 191.49,
-    "lane": 3,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3702,15 +3135,6 @@
     "spawn": 190.4208,
     "hit": 191.69,
     "end": 191.69,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 190.6208,
-    "hit": 191.89,
-    "end": 191.89,
     "lane": 1,
     "stage": 6,
     "speed": 520.0,
@@ -3720,16 +3144,7 @@
     "spawn": 190.8208,
     "hit": 192.09,
     "end": 192.09,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 191.0208,
-    "hit": 192.29,
-    "end": 192.29,
-    "lane": 0,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3738,16 +3153,7 @@
     "spawn": 191.2208,
     "hit": 192.49,
     "end": 192.49,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 191.4208,
-    "hit": 192.69,
-    "end": 192.69,
-    "lane": 1,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3771,28 +3177,10 @@
     "type": "tap"
   },
   {
-    "spawn": 192.2208,
-    "hit": 193.49,
-    "end": 193.49,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 192.4208,
     "hit": 193.69,
     "end": 193.69,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 192.6208,
-    "hit": 193.89,
-    "end": 193.89,
-    "lane": 0,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3801,16 +3189,7 @@
     "spawn": 192.8208,
     "hit": 194.09,
     "end": 194.09,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 193.0208,
-    "hit": 194.29,
-    "end": 194.29,
-    "lane": 2,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3819,16 +3198,7 @@
     "spawn": 193.2208,
     "hit": 194.49,
     "end": 194.49,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 193.4208,
-    "hit": 194.69,
-    "end": 194.69,
-    "lane": 2,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3837,16 +3207,7 @@
     "spawn": 193.6208,
     "hit": 194.89,
     "end": 194.89,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 193.8208,
-    "hit": 195.09,
-    "end": 195.09,
-    "lane": 2,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3855,15 +3216,6 @@
     "spawn": 194.0208,
     "hit": 195.29,
     "end": 195.29,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 194.2208,
-    "hit": 195.49,
-    "end": 195.49,
     "lane": 0,
     "stage": 6,
     "speed": 520.0,
@@ -3879,27 +3231,9 @@
     "type": "tap"
   },
   {
-    "spawn": 194.6208,
-    "hit": 195.89,
-    "end": 195.89,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 194.8208,
     "hit": 196.09,
     "end": 196.09,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 195.0208,
-    "hit": 196.29,
-    "end": 196.29,
     "lane": 2,
     "stage": 6,
     "speed": 520.0,
@@ -3909,16 +3243,7 @@
     "spawn": 195.2208,
     "hit": 196.49,
     "end": 196.49,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 195.4208,
-    "hit": 196.69,
-    "end": 196.69,
-    "lane": 0,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3927,15 +3252,6 @@
     "spawn": 195.6208,
     "hit": 196.89,
     "end": 196.89,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 195.8208,
-    "hit": 197.09,
-    "end": 197.09,
     "lane": 2,
     "stage": 6,
     "speed": 520.0,
@@ -3945,16 +3261,7 @@
     "spawn": 196.0208,
     "hit": 197.29,
     "end": 197.29,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 196.2208,
-    "hit": 197.49,
-    "end": 197.49,
-    "lane": 3,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3963,16 +3270,7 @@
     "spawn": 196.4208,
     "hit": 197.69,
     "end": 197.69,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 196.6208,
-    "hit": 197.89,
-    "end": 197.89,
-    "lane": 2,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3981,16 +3279,7 @@
     "spawn": 196.8208,
     "hit": 198.09,
     "end": 198.09,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 197.0208,
-    "hit": 198.29,
-    "end": 198.29,
-    "lane": 3,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -3999,16 +3288,7 @@
     "spawn": 197.2208,
     "hit": 198.49,
     "end": 198.49,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 197.4208,
-    "hit": 198.69,
-    "end": 198.69,
-    "lane": 2,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4023,28 +3303,10 @@
     "type": "tap"
   },
   {
-    "spawn": 197.8208,
-    "hit": 199.09,
-    "end": 199.09,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 198.0208,
     "hit": 199.29,
     "end": 199.29,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 198.2208,
-    "hit": 199.49,
-    "end": 199.49,
-    "lane": 3,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4059,28 +3321,10 @@
     "type": "tap"
   },
   {
-    "spawn": 198.6208,
-    "hit": 199.89,
-    "end": 199.89,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 198.8208,
     "hit": 200.09,
     "end": 200.09,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 199.0208,
-    "hit": 200.29,
-    "end": 200.29,
-    "lane": 1,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4095,15 +3339,6 @@
     "type": "tap"
   },
   {
-    "spawn": 199.4208,
-    "hit": 200.69,
-    "end": 200.69,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 199.6208,
     "hit": 200.89,
     "end": 200.89,
@@ -4113,28 +3348,10 @@
     "type": "tap"
   },
   {
-    "spawn": 199.8208,
-    "hit": 201.09,
-    "end": 201.09,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 200.0208,
     "hit": 201.29,
     "end": 201.29,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 200.2208,
-    "hit": 201.49,
-    "end": 201.49,
-    "lane": 0,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4143,16 +3360,7 @@
     "spawn": 200.4208,
     "hit": 201.69,
     "end": 201.69,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 200.6208,
-    "hit": 201.89,
-    "end": 201.89,
-    "lane": 0,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4167,28 +3375,10 @@
     "type": "tap"
   },
   {
-    "spawn": 201.0208,
-    "hit": 202.29,
-    "end": 202.29,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 201.2208,
     "hit": 202.49,
     "end": 202.49,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 201.4208,
-    "hit": 202.69,
-    "end": 202.69,
-    "lane": 0,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4197,16 +3387,7 @@
     "spawn": 201.6208,
     "hit": 202.89,
     "end": 202.89,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 201.8208,
-    "hit": 203.09,
-    "end": 203.09,
-    "lane": 2,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4215,7 +3396,7 @@
     "spawn": 202.0208,
     "hit": 203.29,
     "end": 203.29,
-    "lane": 0,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4224,16 +3405,7 @@
     "spawn": 202.4208,
     "hit": 203.69,
     "end": 203.69,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 202.6208,
-    "hit": 203.89,
-    "end": 203.89,
-    "lane": 1,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4242,16 +3414,7 @@
     "spawn": 202.8208,
     "hit": 204.09,
     "end": 204.09,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 203.0208,
-    "hit": 204.29,
-    "end": 204.29,
-    "lane": 0,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4266,28 +3429,10 @@
     "type": "tap"
   },
   {
-    "spawn": 203.4208,
-    "hit": 204.69,
-    "end": 204.69,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 203.6208,
     "hit": 204.89,
     "end": 204.89,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 203.8208,
-    "hit": 205.09,
-    "end": 205.09,
-    "lane": 2,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4296,16 +3441,7 @@
     "spawn": 204.0208,
     "hit": 205.29,
     "end": 205.29,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 204.2208,
-    "hit": 205.49,
-    "end": 205.49,
-    "lane": 3,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4320,15 +3456,6 @@
     "type": "tap"
   },
   {
-    "spawn": 204.6208,
-    "hit": 205.89,
-    "end": 205.89,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 204.8208,
     "hit": 206.09,
     "end": 206.09,
@@ -4338,28 +3465,10 @@
     "type": "tap"
   },
   {
-    "spawn": 205.0208,
-    "hit": 206.29,
-    "end": 206.29,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 205.2208,
     "hit": 206.49,
     "end": 206.49,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 205.4208,
-    "hit": 206.69,
-    "end": 206.69,
-    "lane": 3,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4368,16 +3477,7 @@
     "spawn": 205.6208,
     "hit": 206.89,
     "end": 206.89,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 205.8208,
-    "hit": 207.09,
-    "end": 207.09,
-    "lane": 2,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4386,16 +3486,7 @@
     "spawn": 206.0208,
     "hit": 207.29,
     "end": 207.29,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 206.2208,
-    "hit": 207.49,
-    "end": 207.49,
-    "lane": 2,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4404,16 +3495,7 @@
     "spawn": 206.4208,
     "hit": 207.69,
     "end": 207.69,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 206.6208,
-    "hit": 207.89,
-    "end": 207.89,
-    "lane": 0,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4422,16 +3504,7 @@
     "spawn": 206.8208,
     "hit": 208.09,
     "end": 208.09,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 207.0208,
-    "hit": 208.29,
-    "end": 208.29,
-    "lane": 0,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4440,15 +3513,6 @@
     "spawn": 207.2208,
     "hit": 208.49,
     "end": 208.49,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 207.4208,
-    "hit": 208.69,
-    "end": 208.69,
     "lane": 2,
     "stage": 6,
     "speed": 520.0,
@@ -4459,15 +3523,6 @@
     "hit": 208.89,
     "end": 208.89,
     "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 207.8208,
-    "hit": 209.09,
-    "end": 209.09,
-    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4491,15 +3546,6 @@
     "type": "tap"
   },
   {
-    "spawn": 209.0208,
-    "hit": 210.29,
-    "end": 210.29,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 209.2208,
     "hit": 210.49,
     "end": 210.49,
@@ -4518,27 +3564,9 @@
     "type": "tap"
   },
   {
-    "spawn": 209.8208,
-    "hit": 211.09,
-    "end": 211.09,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 210.0208,
     "hit": 211.29,
     "end": 211.29,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 210.2208,
-    "hit": 211.49,
-    "end": 211.49,
     "lane": 2,
     "stage": 6,
     "speed": 520.0,
@@ -4548,16 +3576,7 @@
     "spawn": 210.4208,
     "hit": 211.69,
     "end": 211.69,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 210.6208,
-    "hit": 211.89,
-    "end": 211.89,
-    "lane": 1,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4566,16 +3585,7 @@
     "spawn": 210.8208,
     "hit": 212.09,
     "end": 212.09,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 211.0208,
-    "hit": 212.29,
-    "end": 212.29,
-    "lane": 1,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4584,16 +3594,7 @@
     "spawn": 211.2208,
     "hit": 212.49,
     "end": 212.49,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 211.4208,
-    "hit": 212.69,
-    "end": 212.69,
-    "lane": 0,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4602,15 +3603,6 @@
     "spawn": 211.6208,
     "hit": 212.89,
     "end": 212.89,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 211.8208,
-    "hit": 213.09,
-    "end": 213.09,
     "lane": 1,
     "stage": 6,
     "speed": 520.0,
@@ -4620,16 +3612,7 @@
     "spawn": 212.0208,
     "hit": 213.29,
     "end": 213.29,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 212.2208,
-    "hit": 213.49,
-    "end": 213.49,
-    "lane": 3,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4638,16 +3621,7 @@
     "spawn": 212.4208,
     "hit": 213.69,
     "end": 213.69,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 212.6208,
-    "hit": 213.89,
-    "end": 213.89,
-    "lane": 0,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4656,16 +3630,7 @@
     "spawn": 212.8208,
     "hit": 214.09,
     "end": 214.09,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 213.0208,
-    "hit": 214.29,
-    "end": 214.29,
-    "lane": 1,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4674,16 +3639,7 @@
     "spawn": 213.2208,
     "hit": 214.49,
     "end": 214.49,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 213.4208,
-    "hit": 214.69,
-    "end": 214.69,
-    "lane": 1,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4692,16 +3648,7 @@
     "spawn": 213.6208,
     "hit": 214.89,
     "end": 214.89,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 213.8208,
-    "hit": 215.09,
-    "end": 215.09,
-    "lane": 3,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4710,16 +3657,7 @@
     "spawn": 214.0208,
     "hit": 215.29,
     "end": 215.29,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 214.2208,
-    "hit": 215.49,
-    "end": 215.49,
-    "lane": 2,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4728,16 +3666,7 @@
     "spawn": 214.4208,
     "hit": 215.69,
     "end": 215.69,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 214.6208,
-    "hit": 215.89,
-    "end": 215.89,
-    "lane": 0,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4746,16 +3675,7 @@
     "spawn": 214.8208,
     "hit": 216.09,
     "end": 216.09,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 215.0208,
-    "hit": 216.29,
-    "end": 216.29,
-    "lane": 0,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4764,16 +3684,7 @@
     "spawn": 215.2208,
     "hit": 216.49,
     "end": 216.49,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 215.4208,
-    "hit": 216.69,
-    "end": 216.69,
-    "lane": 2,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4782,16 +3693,7 @@
     "spawn": 215.6208,
     "hit": 216.89,
     "end": 216.89,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 215.8208,
-    "hit": 217.09,
-    "end": 217.09,
-    "lane": 1,
+    "lane": 3,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4800,15 +3702,6 @@
     "spawn": 216.0208,
     "hit": 217.29,
     "end": 217.29,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 216.2208,
-    "hit": 217.49,
-    "end": 217.49,
     "lane": 3,
     "stage": 6,
     "speed": 520.0,
@@ -4818,16 +3711,7 @@
     "spawn": 216.4208,
     "hit": 217.69,
     "end": 217.69,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 216.6208,
-    "hit": 217.89,
-    "end": 217.89,
-    "lane": 2,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4836,15 +3720,6 @@
     "spawn": 216.8208,
     "hit": 218.09,
     "end": 218.09,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 217.0208,
-    "hit": 218.29,
-    "end": 218.29,
     "lane": 0,
     "stage": 6,
     "speed": 520.0,
@@ -4854,16 +3729,7 @@
     "spawn": 217.2208,
     "hit": 218.49,
     "end": 218.49,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 217.4208,
-    "hit": 218.69,
-    "end": 218.69,
-    "lane": 3,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4878,28 +3744,10 @@
     "type": "tap"
   },
   {
-    "spawn": 217.8208,
-    "hit": 219.09,
-    "end": 219.09,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 218.0208,
     "hit": 219.29,
     "end": 219.29,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 218.2208,
-    "hit": 219.49,
-    "end": 219.49,
-    "lane": 2,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4914,27 +3762,9 @@
     "type": "tap"
   },
   {
-    "spawn": 218.6208,
-    "hit": 219.89,
-    "end": 219.89,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 218.8208,
     "hit": 220.09,
     "end": 220.09,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 219.0208,
-    "hit": 220.29,
-    "end": 220.29,
     "lane": 0,
     "stage": 6,
     "speed": 520.0,
@@ -4944,7 +3774,7 @@
     "spawn": 219.2208,
     "hit": 220.49,
     "end": 220.49,
-    "lane": 2,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -4977,15 +3807,6 @@
     "type": "tap"
   },
   {
-    "spawn": 220.6208,
-    "hit": 221.89,
-    "end": 221.89,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
     "spawn": 220.8208,
     "hit": 222.09,
     "end": 222.09,
@@ -4998,16 +3819,7 @@
     "spawn": 221.4208,
     "hit": 222.69,
     "end": 222.69,
-    "lane": 0,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 221.6208,
-    "hit": 222.89,
-    "end": 222.89,
-    "lane": 3,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -5016,16 +3828,7 @@
     "spawn": 221.8208,
     "hit": 223.09,
     "end": 223.09,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 222.0208,
-    "hit": 223.29,
-    "end": 223.29,
-    "lane": 1,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -5034,16 +3837,7 @@
     "spawn": 222.2208,
     "hit": 223.49,
     "end": 223.49,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 222.4208,
-    "hit": 223.69,
-    "end": 223.69,
-    "lane": 1,
+    "lane": 0,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -5052,16 +3846,7 @@
     "spawn": 222.6208,
     "hit": 223.89,
     "end": 223.89,
-    "lane": 1,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 222.8208,
-    "hit": 224.09,
-    "end": 224.09,
-    "lane": 1,
+    "lane": 2,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"
@@ -5079,15 +3864,6 @@
     "spawn": 223.6208,
     "hit": 224.89,
     "end": 224.89,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 223.8208,
-    "hit": 225.09,
-    "end": 225.09,
     "lane": 0,
     "stage": 6,
     "speed": 520.0,
@@ -5097,25 +3873,7 @@
     "spawn": 224.0208,
     "hit": 225.29,
     "end": 225.29,
-    "lane": 3,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 225.8208,
-    "hit": 227.09,
-    "end": 227.09,
-    "lane": 2,
-    "stage": 6,
-    "speed": 520.0,
-    "type": "tap"
-  },
-  {
-    "spawn": 227.4208,
-    "hit": 228.69,
-    "end": 228.69,
-    "lane": 3,
+    "lane": 1,
     "stage": 6,
     "speed": 520.0,
     "type": "tap"

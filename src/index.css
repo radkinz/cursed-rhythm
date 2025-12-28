@@ -5,7 +5,6 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,6 +12,22 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ✅ Make the app truly full-viewport */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ✅ Stop Vite template from centering the entire app */
+body {
+  min-width: 320px;
+  background-color: #070611; /* fallback behind your gradients/canvas */
+  overflow: hidden;          /* prevents tiny scrollbars; safe for games */
+}
+
+/* Keep your link styles */
 a {
   font-weight: 500;
   color: #646cff;
@@ -22,19 +37,13 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
+/* Keep your base heading style if you want */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
 
+/* Keep your button styles (LandingPage overrides inline styles anyway) */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -54,10 +63,10 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Optional: you can keep the light-mode overrides, but set a dark fallback */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
   }
   a:hover {
     color: #747bff;
