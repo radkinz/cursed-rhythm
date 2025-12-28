@@ -245,8 +245,8 @@ def main():
     mp3_path = "song.mp3"
     out_path = "chart.json"
 
-    bpm = 75.0
-
+    bpm = 144.0 #144 - the drunk & 75 - mikito
+ 
     # Match Phaser
     popup_seconds = 1.4
     miss_px = 60.0
@@ -254,7 +254,7 @@ def main():
     hit_y = 600.0
 
     # Your stage boundaries (keep as-is)
-    boundaries = [0.0, 15.0, 30.0, 75.0, 110.0, 160.0, 231.0]
+    boundaries = [0.0, 15.0, 30.0, 75.0, 110.0, 160.0, 230.0]
 
     # Must match in-game stage speeds
     stage_speeds = [320.0, 360.0, 400.0, 440.0, 480.0, 520.0]
