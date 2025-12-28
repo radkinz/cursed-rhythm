@@ -4,7 +4,7 @@ import React from "react";
 import leftBoy from "./assets/anime_left.png";
 import rightBoy from "./assets/anime_right.png";
 
-export default function LandingPage({ onStart }) {
+export default function LandingPage({ variant, onStart }) {
     return (
         <div style={styles.page}>
             <div style={styles.bgGlow} aria-hidden="true" />
@@ -26,7 +26,7 @@ export default function LandingPage({ onStart }) {
             {/* Center content */}
             <div style={styles.centerWrap}>
                 <h1 style={styles.title}>
-                    PUPPY, <span style={styles.titleAccent}>PLAY!</span>
+                    PUPPY, <span style={styles.titleAccent}>PLAY!</span> <span style={styles.variantTitle}>{variant.title}</span>
                 </h1>
 
                 <p style={styles.subtitle}>
@@ -103,6 +103,11 @@ const styles = {
         textShadow: "0 0 24px rgba(255,154,223,0.45)",
     },
 
+    variantTitle: {
+        fontSize: 32,
+    },
+      
+
     subtitle: {
         margin: "0 auto 18px",
         maxWidth: 560,
@@ -130,6 +135,8 @@ const styles = {
         cursor: "pointer",
         textTransform: "uppercase",
     },
+
+    
 
     hint: {
         marginTop: 12,

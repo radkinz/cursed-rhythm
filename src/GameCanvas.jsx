@@ -2,14 +2,17 @@ import { useEffect, useRef } from "react";
 import Phaser from "phaser";
 
 class PlayScene extends Phaser.Scene {
-    constructor(onGameOver) {
+    constructor(onGameOver, song, chart, end) {
         super("play");
         this.onGameOver = onGameOver;
+        this.song = song
+        this.chart = chart
+        this.end = end
     }
 
     preload() {
-        this.load.audio("song", "audio/song.mp3");
-        this.load.json("chart", "charts/chart.json");
+        this.load.audio("song", this.song);
+        this.load.json("chart", this.chart);
 
         this.load.image("arrowL", "sprites/arrow_left.png");
         this.load.image("arrowD", "sprites/arrow_down.png");
@@ -34,7 +37,7 @@ class PlayScene extends Phaser.Scene {
         this.missStreak = 0;
         this.maxMissStreak = 8; // tune: 6–10 feels good
         this.failAccuracy = 0.65; // 65% feels good (tune per stage later)
-        this.minNotesBeforeFail = 5; // prevents early instant failure
+        this.minNotesBeforeFail = 10; // prevents early instant failure
         this.failAccuracyByStage = [0.55, 0.60, 0.65, 0.70, 0.72, 0.75];
         this.warnAccuracyOffset = 0.12; // warning starts 8% above fail threshold
         this.accuracyWarning = false;   // tracks if warning UI is active
@@ -61,7 +64,8 @@ class PlayScene extends Phaser.Scene {
 
         this.lanesCenterX = left + totalWidth / 2;
 
-        // ---- 6 stages for 231s ----
+        // ---- 6 stagess
+        console.log(this.end)
         this.stages = [
             {
                 name: "READY, PUPPY?",
@@ -101,7 +105,7 @@ class PlayScene extends Phaser.Scene {
             {
                 name: "BEST PUPPY EVER!",
                 start: 160,
-                end: 231,
+                end: this.end,
                 params: { perfectS: 0.045, greatS: 0.090, goodS: 0.145 },
                 message: "Show me your best.",
             },
@@ -567,16 +571,22 @@ class PlayScene extends Phaser.Scene {
 
 
     update(time, delta) {
-        // Only run gameplay when the song is playing
-        if (!this.song) return;
+        if (!this.song || this._ended) return;
 
-        if (!this.song.isPlaying && !this._ended) {
-            this.endGame("finished");
+        const songTime = this.song.seek; // seconds
+
+        // END when final stage window is over (even if song still playing)
+        const lastStageEnd = this.stages?.[this.stages.length - 1]?.end;
+        if (lastStageEnd != null && songTime >= lastStageEnd) {
+            this.endGame("stage_finished");
             return;
         }
 
-
-        const songTime = this.song.seek;
+        // END when audio stops (fallback)
+        if (!this.song.isPlaying) {
+            this.endGame("finished");
+            return;
+        }
 
         // 0) Stage transition
         if (this.currentStage && songTime >= this.currentStage.end && this.stageActive) {
@@ -734,14 +744,14 @@ class PlayScene extends Phaser.Scene {
 
 }
 
-export default function GameCanvas({ onGameOver }) {
+export default function GameCanvas({ variant, onGameOver }) {
     const containerRef = useRef(null);
     const gameRef = useRef(null);
 
     useEffect(() => {
         if (gameRef.current) return;
 
-        const scene = new PlayScene(onGameOver);
+        const scene = new PlayScene(onGameOver, variant.song, variant.chart, variant.end);
 
         gameRef.current = new Phaser.Game({
             type: Phaser.AUTO,
