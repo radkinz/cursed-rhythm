@@ -2,8 +2,9 @@ import { useEffect, useRef } from "react";
 import Phaser from "phaser";
 
 class PlayScene extends Phaser.Scene {
-    constructor() {
+    constructor(onGameOver) {
         super("play");
+        this.onGameOver = onGameOver;
     }
 
     preload() {
@@ -24,6 +25,20 @@ class PlayScene extends Phaser.Scene {
 
         this.score = 0;
         this.combo = 0;
+        this.maxCombo = 0;
+        this.countPerfect = 0;
+        this.countGreat = 0;
+        this.countGood = 0;
+        this.countMiss = 0;
+
+        this.missStreak = 0;
+        this.maxMissStreak = 8; // tune: 6–10 feels good
+        this.failAccuracy = 0.65; // 65% feels good (tune per stage later)
+        this.minNotesBeforeFail = 5; // prevents early instant failure
+        this.failAccuracyByStage = [0.55, 0.60, 0.65, 0.70, 0.72, 0.75];
+        this.warnAccuracyOffset = 0.12; // warning starts 8% above fail threshold
+        this.accuracyWarning = false;   // tracks if warning UI is active
+
 
         this.stageIndex = 0;
         this.stageActive = true;
@@ -31,8 +46,9 @@ class PlayScene extends Phaser.Scene {
 
         // ---- Geometry ----
         const { width, height } = this.scale;
-
-        this.add.rectangle(width / 2, height / 2, width, height, 0x0b0b10);
+        const cx = width / 2;
+        const cy = height / 2;
+        this.bg = this.add.rectangle(cx, cy, width, height, 0x0b0b10, 0.25);
 
         const lanes = 4;
         const laneWidth = Math.min(160, Math.floor(width * 0.16));
@@ -48,46 +64,46 @@ class PlayScene extends Phaser.Scene {
         // ---- 6 stages for 231s ----
         this.stages = [
             {
-                name: "Stage 1",
+                name: "READY, PUPPY?",
                 start: 0,
                 end: 15,
                 params: { perfectS: 0.080, greatS: 0.140, goodS: 0.220 },
-                message: "Stage 1: tutorial mode. Try not to trip.",
+                message: "Let's try together ♡",
             },
             {
-                name: "Stage 2",
+                name: "SIT & LISTEN",
                 start: 15,
                 end: 30,
                 params: { perfectS: 0.070, greatS: 0.130, goodS: 0.200 },
-                message: "Stage 2: okay, you can tap. Congrats.",
+                message: "Pay attention now.",
             },
             {
-                name: "Stage 3",
+                name: "GOOD RHYTHM!",
                 start: 30,
                 end: 75,
                 params: { perfectS: 0.060, greatS: 0.120, goodS: 0.180 },
-                message: "Stage 3: keep it together.",
+                message: "You're learning ~",
             },
             {
-                name: "Stage 4",
+                name: "STAY FOCUSED",
                 start: 75,
                 end: 110,
                 params: { perfectS: 0.055, greatS: 0.110, goodS: 0.170 },
-                message: "Stage 4: now we’re cooking. (badly.)",
+                message: "Eyes forward.",
             },
             {
-                name: "Stage 5",
+                name: "STILL WITH ME?",
                 start: 110,
                 end: 160,
                 params: { perfectS: 0.050, greatS: 0.100, goodS: 0.160 },
-                message: "Stage 5: focus. Or perish.",
+                message: "Almost there.",
             },
             {
-                name: "Stage 6",
+                name: "BEST PUPPY EVER!",
                 start: 160,
                 end: 231,
                 params: { perfectS: 0.045, greatS: 0.090, goodS: 0.145 },
-                message: "Stage 6: final. Don’t blink.",
+                message: "Show me your best.",
             },
         ];
 
@@ -142,11 +158,37 @@ class PlayScene extends Phaser.Scene {
 
         // ---- Lanes ----
         this.laneRects = [];
+        this.laneBase = { color: 0x151526, alpha: 0.65 }; // 👈 baseline
+
         for (let i = 0; i < lanes; i++) {
             const x = left + i * (laneWidth + gap) + laneWidth / 2;
-            const rect = this.add.rectangle(x, height / 2, laneWidth, height, 0x151526).setAlpha(0.95);
+            const rect = this.add
+                .rectangle(x, height / 2, laneWidth, height, this.laneBase.color)
+                .setAlpha(this.laneBase.alpha);
+
             this.laneRects.push(rect);
         }
+
+        this.laneGlowRects = [];
+
+        this.laneRects.forEach((lane) => {
+            const glow = this.add.rectangle(
+                lane.x,
+                lane.y,
+                lane.width,
+                lane.height,
+                0xffe066,
+                1 // create fully opaque, we control visibility with setAlpha()
+            );
+
+            glow.setAlpha(0);              // start hidden
+            glow.setOrigin(0.5);
+            glow.setDepth(5);              // 👈 IMPORTANT (above lanes)
+            glow.setBlendMode(Phaser.BlendModes.ADD);
+
+            this.laneGlowRects.push(glow);
+        });
+
 
         // Separators
         for (let i = 1; i < lanes; i++) {
@@ -210,11 +252,7 @@ class PlayScene extends Phaser.Scene {
         // ---- Audio ----
         this.sound.pauseOnBlur = false;
         this.song = this.sound.add("song", { volume: 0.8 });
-
-        // Start on Space
-        this.input.keyboard.once("keydown-SPACE", () => {
-            this.song.play();
-        });
+        this.song.play();
 
         // Arrow keys -> lanes
         const arrowKeys = this.input.keyboard.createCursorKeys();
@@ -224,7 +262,7 @@ class PlayScene extends Phaser.Scene {
         arrowKeys.right.on("down", () => this.tryHit(3));
 
         // Optional: show Stage 1 popup right away
-        this.showStagePopup("Stage 1", this.stages[0].message, () => { });
+        this.showStagePopup("READY, PUPPY?", this.stages[0].message, () => { });
     }
 
     applyStage(i) {
@@ -236,6 +274,35 @@ class PlayScene extends Phaser.Scene {
         this.greatS = s.params.greatS;
         this.goodS = s.params.goodS;
     }
+
+    showAccuracyWarning() {
+        if (!this.laneGlowRects?.length) return;
+
+        this.laneGlowRects.forEach((g) => {
+            this.tweens.killTweensOf(g);
+            g.setAlpha(0);
+
+            this.tweens.add({
+                targets: g,
+                alpha: 0.18,        // tune: 0.10–0.22
+                duration: 300,
+                yoyo: true,
+                repeat: -1,
+                ease: "Sine.easeInOut",
+            });
+        });
+    }
+
+    clearAccuracyWarning() {
+        if (!this.laneGlowRects?.length) return;
+
+        this.laneGlowRects.forEach((g) => {
+            this.tweens.killTweensOf(g);
+            g.setAlpha(0);
+        });
+    }
+
+
 
     beginStageTransition() {
         this.stageActive = false;
@@ -249,8 +316,9 @@ class PlayScene extends Phaser.Scene {
         }
 
         const msg = this.stages[nextIndex].message;
+        const title = this.stages[nextIndex].name;
 
-        this.showStagePopup(`Stage ${nextIndex + 1}`, msg, () => {
+        this.showStagePopup(title, msg, () => {
             this.stageIndex = nextIndex;
             this.applyStage(this.stageIndex);
 
@@ -421,12 +489,19 @@ class PlayScene extends Phaser.Scene {
                 label = "GOOD";
             }
 
+            this.missStreak = 0;
+            if (label === "PERFECT") this.countPerfect += 1;
+            else if (label === "GREAT") this.countGreat += 1;
+            else this.countGood += 1;
+
+
             this.showJudgement(laneIndex, label);
 
             best.sprite.destroy();
             this.notes = this.notes.filter(n => n !== best);
 
             this.combo += 1;
+            this.maxCombo = Math.max(this.maxCombo, this.combo);
             this.score += points + Math.min(this.combo, 50);
             this.scoreText.setText(`Score: ${this.score}\nCombo: ${this.combo}`);
             return;
@@ -451,10 +526,55 @@ class PlayScene extends Phaser.Scene {
         }
     }
 
+    endGame(reason = "finished") {
+        if (this._ended) return;
+        this._ended = true;
+
+        try { this.song?.stop(); } catch { }
+
+        this.stageActive = false;
+        this.spawningEnabled = false;
+
+        this.onGameOver?.({
+            reason,
+            score: this.score ?? 0,
+            maxCombo: this.maxCombo ?? 0,
+            perfect: this.countPerfect ?? 0,
+            great: this.countGreat ?? 0,
+            good: this.countGood ?? 0,
+            miss: this.countMiss ?? 0,
+        });
+    }
+
+    getAccuracy() {
+        const total =
+            this.countPerfect +
+            this.countGreat +
+            this.countGood +
+            this.countMiss;
+
+        if (total === 0) return 1;
+
+        const weighted =
+            this.countPerfect +
+            0.75 * this.countGreat +
+            0.4 * this.countGood;
+
+        return weighted / total;
+    }
+
+
+
 
     update(time, delta) {
         // Only run gameplay when the song is playing
-        if (!this.song || !this.song.isPlaying) return;
+        if (!this.song) return;
+
+        if (!this.song.isPlaying && !this._ended) {
+            this.endGame("finished");
+            return;
+        }
+
 
         const songTime = this.song.seek;
 
@@ -513,6 +633,13 @@ class PlayScene extends Phaser.Scene {
                 this.combo = 0;
                 this.showJudgement(n.laneIndex, "MISS");
                 this.scoreText.setText(`Score: ${this.score}\nCombo: ${this.combo}`);
+                this.countMiss += 1;
+                this.missStreak += 1;
+
+                if (this.missStreak >= this.maxMissStreak) {
+                    this.endGame("meltdown"); // auto score page
+                    return false;
+                }
 
                 // Optional: destroy immediately on fail
                 n.sprite.destroy();
@@ -553,6 +680,7 @@ class PlayScene extends Phaser.Scene {
                 if (!(n.type === "hold" && n._holdFailed)) {
                     this.combo = 0;
                     this.showJudgement(n.laneIndex, "MISS");
+                    this.countMiss += 1;
                     this.scoreText.setText(`Score: ${this.score}\nCombo: ${this.combo}`);
                 }
 
@@ -562,27 +690,67 @@ class PlayScene extends Phaser.Scene {
             }
             return true;
 
-
-            return true;
         });
+
+        // 5) Accuracy-based auto-fail (global)
+        // --- Accuracy-based warning + auto-fail ---
+        const totalHits =
+            this.countPerfect +
+            this.countGreat +
+            this.countGood +
+            this.countMiss;
+
+        this.failAccuracy = this.failAccuracyByStage[this.stageIndex] ?? 0.7;
+        const warnAccuracy = Math.min(0.95, this.failAccuracy + this.warnAccuracyOffset);
+
+        if (totalHits >= this.minNotesBeforeFail) {
+            const acc = this.getAccuracy();
+
+            // ENTER WARNING ZONE
+            console.log(acc, warnAccuracy, this.failAccuracy)
+            if (acc < warnAccuracy && acc >= this.failAccuracy) {
+                if (!this.accuracyWarning) {
+                    this.accuracyWarning = true;
+                    console.log("TRIGGER")
+                    this.showAccuracyWarning(); // 👈 CALL HERE
+                }
+            }
+
+            // EXIT WARNING ZONE (recovered)
+            if (acc >= warnAccuracy && this.accuracyWarning) {
+                this.accuracyWarning = false;
+                this.clearAccuracyWarning(); // 👈 CALL HERE
+            }
+
+            // FAIL
+            if (!this._ended && acc < this.failAccuracy) {
+                this.endGame("low_accuracy");
+                return;
+            }
+        }
+
+
     }
 
 }
 
-export default function GameCanvas() {
+export default function GameCanvas({ onGameOver }) {
     const containerRef = useRef(null);
     const gameRef = useRef(null);
 
     useEffect(() => {
         if (gameRef.current) return;
 
+        const scene = new PlayScene(onGameOver);
+
         gameRef.current = new Phaser.Game({
             type: Phaser.AUTO,
             parent: containerRef.current,
             width: "100%",
             height: "100%",
-            backgroundColor: "#0b0b10",
-            scene: [PlayScene],
+            transparent: true,
+            backgroundColor: "transparent",
+            scene: [scene],
             scale: {
                 mode: Phaser.Scale.RESIZE,
                 autoCenter: Phaser.Scale.CENTER_BOTH,
@@ -599,9 +767,13 @@ export default function GameCanvas() {
         <div
             ref={containerRef}
             style={{
+                position: "relative",
+                zIndex: 1,
                 width: "100vw",
                 height: "100vh",
                 overflow: "hidden",
+                transparent: true,
+                backgroundColor: "transparent"
             }}
         />
     );
