@@ -80,4 +80,4 @@ To run this project locally:
 
 ## Video Demo
 
-<video src="LiveGameplay.mp4" controls height="600"></video>
+[![Cursed Rhythm Demo]](LiveGamplay.mp4)
