@@ -80,4 +80,6 @@ To run this project locally:
 
 ## Video Demo
 
-[![Cursed Rhythm Demo]](LiveGameplay.mp4)
+https://github.com/user-attachments/assets/f087b02f-b069-4aab-9d08-8e908fbc013b
+
+
